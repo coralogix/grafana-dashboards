@@ -1,0 +1,365 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": "-- Grafana --",
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "gnetId": null,
+    "graphTooltip": 0,
+    "id": 478,
+    "iteration": 1665783644828,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": null,
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 0
+        },
+        "id": 2,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "table",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "avg(amazonaws_com_AWS_ElastiCache_CacheHits{CacheClusterId=\"$cacheclusterId\"})",
+            "interval": "",
+            "legendFormat": "CacheHits_Average",
+            "refId": "A"
+          },
+          {
+            "exemplar": true,
+            "expr": "avg(amazonaws_com_AWS_ElastiCache_CacheMisses{CacheClusterId=\"$cacheclusterId\"})",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "CacheMisses_Average",
+            "refId": "B"
+          },
+          {
+            "exemplar": true,
+            "expr": "avg(amazonaws_com_AWS_ElastiCache_Evictions{CacheClusterId=\"$cacheclusterId\"})",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "Evictions_Average",
+            "refId": "C"
+          },
+          {
+            "exemplar": true,
+            "expr": "avg(amazonaws_com_AWS_ElastiCache_Reclaimed{CacheClusterId=\"$cacheclusterId\"})",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "Reclaimed_Average",
+            "refId": "D"
+          }
+        ],
+        "title": "Cache",
+        "type": "timeseries"
+      },
+      {
+        "datasource": null,
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 24,
+          "x": 0,
+          "y": 8
+        },
+        "id": 3,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "table",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "avg(amazonaws_com_AWS_ElastiCache_GetTypeCmds{CacheClusterId=\"$cacheclusterId\"})",
+            "interval": "",
+            "legendFormat": "GetTypeCmds_Average",
+            "refId": "A"
+          },
+          {
+            "exemplar": true,
+            "expr": "avg(amazonaws_com_AWS_ElastiCache_HashBasedCmds{CacheClusterId=\"$cacheclusterId\"})",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "HashBasedCmds_Average",
+            "refId": "B"
+          },
+          {
+            "exemplar": true,
+            "expr": "avg(amazonaws_com_AWS_ElastiCache_ListBasedCmds{CacheClusterId=\"$cacheclusterId\"})",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "ListBasedCmds_Average",
+            "refId": "C"
+          },
+          {
+            "exemplar": true,
+            "expr": "avg(amazonaws_com_AWS_ElastiCache_SetBasedCmds{CacheClusterId=\"$cacheclusterId\"})",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "SetBasedCmds_Average",
+            "refId": "D"
+          },
+          {
+            "exemplar": true,
+            "expr": "avg(amazonaws_com_AWS_ElastiCache_SetTypeCmds{CacheClusterId=\"$cacheclusterId\"})",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "SetTypeCmds_Average",
+            "refId": "E"
+          },
+          {
+            "exemplar": true,
+            "expr": "avg(amazonaws_com_AWS_ElastiCache_SortedSetBasedCmds{CacheClusterId=\"$cacheclusterId\"})",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "SortedSetBasedCmds_Average",
+            "refId": "F"
+          },
+          {
+            "exemplar": true,
+            "expr": "avg(amazonaws_com_AWS_ElastiCache_StringBasedCmds)",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "StringBasedCmds_Average",
+            "refId": "G"
+          }
+        ],
+        "title": "Cmds",
+        "type": "timeseries"
+      }
+    ],
+    "refresh": "",
+    "schemaVersion": 32,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "allValue": null,
+          "current": {
+            "selected": false,
+            "text": "us-east-1",
+            "value": "us-east-1"
+          },
+          "datasource": null,
+          "definition": "label_values(__aws_region)",
+          "description": null,
+          "error": null,
+          "hide": 0,
+          "includeAll": false,
+          "label": "Region",
+          "multi": false,
+          "name": "region",
+          "options": [],
+          "query": {
+            "query": "label_values(__aws_region)",
+            "refId": "StandardVariableQuery"
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "allValue": null,
+          "current": {
+            "selected": false,
+            "text": "dee1l6sblj4iv4xz-001",
+            "value": "dee1l6sblj4iv4xz-001"
+          },
+          "datasource": null,
+          "definition": "label_values(CacheClusterId)",
+          "description": null,
+          "error": null,
+          "hide": 0,
+          "includeAll": false,
+          "label": "CacheClusterId",
+          "multi": false,
+          "name": "cacheclusterId",
+          "options": [],
+          "query": {
+            "query": "label_values(CacheClusterId)",
+            "refId": "StandardVariableQuery"
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "allValue": null,
+          "current": {
+            "selected": false,
+            "text": "0001",
+            "value": "0001"
+          },
+          "datasource": null,
+          "definition": "label_values(CacheNodeId)",
+          "description": null,
+          "error": null,
+          "hide": 0,
+          "includeAll": false,
+          "label": "CacheNodeId",
+          "multi": false,
+          "name": "cachenodeId",
+          "options": [],
+          "query": {
+            "query": "label_values(CacheNodeId)",
+            "refId": "StandardVariableQuery"
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-6h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "[POC] AWS - ElastiCache",
+    "uid": "a2l4GfnVk",
+    "version": 4
+  }

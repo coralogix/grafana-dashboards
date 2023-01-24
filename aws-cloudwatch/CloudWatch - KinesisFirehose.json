@@ -1,0 +1,759 @@
+{
+    "annotations": {
+      "list": [
+        {
+          "builtIn": 1,
+          "datasource": "-- Grafana --",
+          "enable": true,
+          "hide": true,
+          "iconColor": "rgba(0, 211, 255, 1)",
+          "name": "Annotations & Alerts",
+          "target": {
+            "limit": 100,
+            "matchAny": false,
+            "tags": [],
+            "type": "dashboard"
+          },
+          "type": "dashboard"
+        }
+      ]
+    },
+    "editable": true,
+    "fiscalYearStartMonth": 0,
+    "gnetId": null,
+    "graphTooltip": 0,
+    "id": 747,
+    "iteration": 1668784205120,
+    "links": [],
+    "liveNow": false,
+    "panels": [
+      {
+        "datasource": null,
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "opacity",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "smooth",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "decbytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 0
+        },
+        "id": 25,
+        "options": {
+          "legend": {
+            "calcs": [
+              "min",
+              "max",
+              "mean",
+              "lastNotNull"
+            ],
+            "displayMode": "table",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "avg(amazonaws_com_AWS_Firehose_DeliveryToHttpEndpoint_ProcessedBytes_sum{DeliveryStreamName=~\"$firehose_stream\",account_id=~\"$aws_account_id\",cx_tenant_id=~\"$coralogix_account_id\",__aws_region=~\"$aws_region\"})",
+            "interval": "",
+            "legendFormat": "{{DeliveryStreamName}}",
+            "refId": "A"
+          }
+        ],
+        "title": "Delivery to Http Endpoint ProcessedBytes: Avg",
+        "type": "timeseries"
+      },
+      {
+        "datasource": null,
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "opacity",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "smooth",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "none"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 0
+        },
+        "id": 27,
+        "options": {
+          "legend": {
+            "calcs": [
+              "min",
+              "max",
+              "mean",
+              "lastNotNull"
+            ],
+            "displayMode": "table",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "pluginVersion": "8.2.6",
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(amazonaws_com_AWS_Firehose_DeliveryToHttpEndpoint_ProcessedRecords_count{DeliveryStreamName=~\"$firehose_stream\",account_id=~\"$aws_account_id\",cx_tenant_id=~\"$coralogix_account_id\",__aws_region=~\"$aws_region\"}) by (DeliveryStreamName)",
+            "interval": "",
+            "legendFormat": "{{DeliveryStreamName}}",
+            "refId": "A"
+          }
+        ],
+        "title": "Delivery to Http Endpoint Processed Records Count: Sum",
+        "type": "timeseries"
+      },
+      {
+        "datasource": null,
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "mappings": [],
+            "unit": "none"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 8
+        },
+        "id": 8,
+        "options": {
+          "legend": {
+            "displayMode": "table",
+            "placement": "right",
+            "values": [
+              "value"
+            ]
+          },
+          "pieType": "donut",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "pluginVersion": "8.2.6",
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(amazonaws_com_AWS_Firehose_KMSKeyAccessDenied_count{DeliveryStreamName=~\"$firehose_stream\",account_id=~\"$aws_account_id\",cx_tenant_id=~\"$coralogix_account_id\",__aws_region=~\"$aws_region\"}) by (DeliveryStreamName)",
+            "interval": "",
+            "legendFormat": "{{DeliveryStreamName}}",
+            "refId": "A"
+          }
+        ],
+        "title": "Delivery to Http End Point Success: Sum",
+        "type": "piechart"
+      },
+      {
+        "datasource": null,
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "smooth",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "short"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 8
+        },
+        "id": 26,
+        "options": {
+          "legend": {
+            "calcs": [
+              "last",
+              "max",
+              "mean"
+            ],
+            "displayMode": "table",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(amazonaws_com_AWS_Firehose_IncomingRecords_count{DeliveryStreamName=~\"$firehose_stream\",account_id=~\"$aws_account_id\",cx_tenant_id=~\"$coralogix_account_id\",__aws_region=~\"$aws_region\"}) by (DeliveryStreamName)",
+            "interval": "",
+            "legendFormat": "{{DeliveryStreamName}}",
+            "refId": "A"
+          },
+          {
+            "exemplar": true,
+            "expr": "avg_over_time(amazonaws_com_AWS_Firehose_RecordsPerSecondLimit_sum{DeliveryStreamName=~\"$firehose_stream\", __meta_account_id=~\"$aws_account_id\", cx_tenant_id=~\"$coralogix_account_id\"}[10m])",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "records per second limit",
+            "refId": "B"
+          }
+        ],
+        "title": "Incoming Records",
+        "type": "timeseries"
+      },
+      {
+        "datasource": null,
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "smooth",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "bytes"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 16
+        },
+        "id": 10,
+        "options": {
+          "legend": {
+            "calcs": [
+              "min",
+              "max",
+              "mean",
+              "lastNotNull"
+            ],
+            "displayMode": "table",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(amazonaws_com_AWS_Firehose_IncomingBytes_sum{DeliveryStreamName=~\"$firehose_stream\",account_id=~\"$aws_account_id\",cx_tenant_id=~\"$coralogix_account_id\",__aws_region=~\"$aws_region\"}) by (DeliveryStreamName)",
+            "interval": "",
+            "legendFormat": "{{DeliveryStreamName}}",
+            "refId": "A"
+          },
+          {
+            "exemplar": true,
+            "expr": "avg_over_time(amazonaws_com_AWS_Firehose_BytesPerSecondLimit_sum{DeliveryStreamName=~\"$firehose_stream\", __meta_account_id=~\"$aws_account_id\", cx_tenant_id=~\"$coralogix_account_id\"}[10m])",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "Bytes Per Second Limit",
+            "refId": "B"
+          }
+        ],
+        "title": "Incoming Bytes",
+        "type": "timeseries"
+      },
+      {
+        "datasource": null,
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            },
+            "unit": "Rec"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 12,
+          "y": 16
+        },
+        "id": 12,
+        "options": {
+          "legend": {
+            "calcs": [
+              "max",
+              "mean",
+              "lastNotNull"
+            ],
+            "displayMode": "table",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "(sum without (MetricName)(amazonaws_com_AWS_Firehose_DeliveryToHttpEndpoint_ProcessedRecords_sum{DeliveryStreamName=~\"$firehose_stream\",account_id=~\"$aws_account_id\",cx_tenant_id=~\"$coralogix_account_id\",__aws_region=~\"$aws_region\"}))-(sum without (MetricName)(amazonaws_com_AWS_Firehose_DeliveryToHttpEndpoint_Records_sum{DeliveryStreamName=~\"$firehose_stream\",account_id=~\"$aws_account_id\",cx_tenant_id=~\"$coralogix_account_id\",__aws_region=~\"$aws_region\"}))",
+            "interval": "",
+            "legendFormat": "{{DeliveryStreamName}}",
+            "refId": "A"
+          }
+        ],
+        "title": "Failed/Retried Processed Records",
+        "type": "timeseries"
+      },
+      {
+        "datasource": null,
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "opacity",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "smooth",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            },
+            "unit": "none"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 8,
+          "w": 12,
+          "x": 0,
+          "y": 24
+        },
+        "id": 16,
+        "options": {
+          "legend": {
+            "calcs": [
+              "min",
+              "max",
+              "mean",
+              "lastNotNull"
+            ],
+            "displayMode": "table",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(amazonaws_com_AWS_Firehose_IncomingPutRequests_sum{DeliveryStreamName=~\"$firehose_stream\",account_id=~\"$aws_account_id\",cx_tenant_id=~\"$coralogix_account_id\",__aws_region=~\"$aws_region\"}) by (DeliveryStreamName)",
+            "interval": "",
+            "legendFormat": "Put Records - {{ DeliveryStreamName }}",
+            "refId": "A"
+          },
+          {
+            "exemplar": true,
+            "expr": "sum(amazonaws_com_AWS_Firehose_ThrottledRecords_sum{DeliveryStreamName=~\"$firehose_stream\",account_id=~\"$aws_account_id\",cx_tenant_id=~\"$coralogix_account_id\",__aws_region=~\"$aws_region\"}) by (DeliveryStreamName)",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "Throttled - {{ DeliveryStreamName }}",
+            "refId": "B"
+          }
+        ],
+        "title": "Throttled Records VS Put Requests",
+        "type": "timeseries"
+      }
+    ],
+    "refresh": false,
+    "schemaVersion": 32,
+    "style": "dark",
+    "tags": [],
+    "templating": {
+      "list": [
+        {
+          "allValue": ".*",
+          "current": {
+            "selected": true,
+            "text": [
+              "All"
+            ],
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": null,
+          "definition": "label_values(DeliveryStreamName)",
+          "description": null,
+          "error": null,
+          "hide": 0,
+          "includeAll": true,
+          "label": null,
+          "multi": true,
+          "name": "firehose_stream",
+          "options": [],
+          "query": {
+            "query": "label_values(DeliveryStreamName)",
+            "refId": "StandardVariableQuery"
+          },
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "allValue": null,
+          "current": {
+            "selected": true,
+            "text": [
+              "All"
+            ],
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": null,
+          "definition": "label_values(account_id)",
+          "description": null,
+          "error": null,
+          "hide": 0,
+          "includeAll": true,
+          "label": null,
+          "multi": true,
+          "name": "aws_account_id",
+          "options": [],
+          "query": {
+            "query": "label_values(account_id)",
+            "refId": "StandardVariableQuery"
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "allValue": ".*",
+          "current": {
+            "selected": false,
+            "text": "All",
+            "value": "$__all"
+          },
+          "datasource": null,
+          "definition": "label_values(cx_tenant_id)",
+          "description": null,
+          "error": null,
+          "hide": 0,
+          "includeAll": true,
+          "label": null,
+          "multi": true,
+          "name": "coralogix_account_id",
+          "options": [],
+          "query": {
+            "query": "label_values(cx_tenant_id)",
+            "refId": "StandardVariableQuery"
+          },
+          "refresh": 1,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        },
+        {
+          "allValue": ".*",
+          "current": {
+            "selected": true,
+            "text": [
+              "All"
+            ],
+            "value": [
+              "$__all"
+            ]
+          },
+          "datasource": null,
+          "definition": "label_values(__aws_region)",
+          "description": null,
+          "error": null,
+          "hide": 0,
+          "includeAll": true,
+          "label": null,
+          "multi": true,
+          "name": "aws_region",
+          "options": [],
+          "query": {
+            "query": "label_values(__aws_region)",
+            "refId": "StandardVariableQuery"
+          },
+          "refresh": 2,
+          "regex": "",
+          "skipUrlSync": false,
+          "sort": 0,
+          "type": "query"
+        }
+      ]
+    },
+    "time": {
+      "from": "now-1h",
+      "to": "now"
+    },
+    "timepicker": {},
+    "timezone": "",
+    "title": "[POC] AWS - Kinesis Firehose",
+    "uid": "VU2Dlw67k",
+    "version": 4
+  }

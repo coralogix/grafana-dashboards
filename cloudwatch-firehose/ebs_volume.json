@@ -1131,7 +1131,7 @@
     },
     "timepicker": {},
     "timezone": "",
-    "title": "[POC] AWS EBS",
+    "title": "CloudWatch - EBS Volume",
     "uid": "AWSEBSaaa",
     "version": 6
   }

@@ -18,13 +18,12 @@
         }
       ]
     },
-    "description": "",
     "editable": true,
     "fiscalYearStartMonth": 0,
     "gnetId": null,
     "graphTooltip": 0,
-    "id": 937,
-    "iteration": 1671023250562,
+    "id": 469,
+    "iteration": 1678733585048,
     "links": [],
     "liveNow": false,
     "panels": [
@@ -48,17 +47,17 @@
                 "tooltip": false,
                 "viz": false
               },
-              "lineInterpolation": "smooth",
+              "lineInterpolation": "linear",
               "lineWidth": 1,
               "pointSize": 5,
               "scaleDistribution": {
                 "type": "linear"
               },
               "showPoints": "auto",
-              "spanNulls": true,
+              "spanNulls": false,
               "stacking": {
                 "group": "A",
-                "mode": "none"
+                "mode": "normal"
               },
               "thresholdsStyle": {
                 "mode": "off"
@@ -82,19 +81,18 @@
           "overrides": []
         },
         "gridPos": {
-          "h": 7,
+          "h": 10,
           "w": 12,
           "x": 0,
           "y": 0
         },
-        "id": 17,
+        "id": 2,
         "options": {
           "legend": {
             "calcs": [
-              "min",
-              "max",
+              "lastNotNull",
               "mean",
-              "lastNotNull"
+              "sum"
             ],
             "displayMode": "table",
             "placement": "bottom"
@@ -103,16 +101,20 @@
             "mode": "single"
           }
         },
+        "pluginVersion": "8.2.6",
         "targets": [
           {
             "exemplar": true,
-            "expr": "avg(amazonaws_com_AWS_RDS_CPUUtilization{DBInstanceIdentifier=~\"$DBInstanceIdentifier\",DBInstanceIdentifier!=\"\"}) by (DBInstanceIdentifier)",
+            "expr": "avg(cloudwatch_aws_application_elb_request_count_average{load_balancer=~\"$load_balancer\"}) by (load_balancer)",
+            "hide": false,
             "interval": "",
-            "legendFormat": "{{DBInstanceIdentifier}}",
+            "legendFormat": "{{load_balancer}}",
             "refId": "A"
           }
         ],
-        "title": "DB CPU Utilization %",
+        "timeFrom": null,
+        "timeShift": null,
+        "title": "Requests",
         "type": "timeseries"
       },
       {
@@ -129,7 +131,7 @@
               "barAlignment": 0,
               "drawStyle": "line",
               "fillOpacity": 0,
-              "gradientMode": "opacity",
+              "gradientMode": "none",
               "hideFrom": {
                 "legend": false,
                 "tooltip": false,
@@ -169,19 +171,18 @@
           "overrides": []
         },
         "gridPos": {
-          "h": 7,
+          "h": 10,
           "w": 12,
           "x": 12,
           "y": 0
         },
-        "id": 60,
+        "id": 9,
         "options": {
           "legend": {
             "calcs": [
-              "min",
-              "max",
+              "lastNotNull",
               "mean",
-              "lastNotNull"
+              "sum"
             ],
             "displayMode": "table",
             "placement": "bottom"
@@ -193,13 +194,14 @@
         "targets": [
           {
             "exemplar": true,
-            "expr": "avg(amazonaws_com_AWS_RDS_Deadlocks_sum{DBInstanceIdentifier=~\"$DBInstanceIdentifier\",DBInstanceIdentifier!=\"\"}) by (DBInstanceIdentifier)",
+            "expr": "avg(cloudwatch_aws_application_elb_target_response_time_average{load_balancer=~\"$load_balancer\"}) by (load_balancer)",
+            "hide": false,
             "interval": "",
-            "legendFormat": "{{DBInstanceIdentifier}}",
-            "refId": "A"
+            "legendFormat": "{{load_balancer}}",
+            "refId": "B"
           }
         ],
-        "title": "Deadlocks",
+        "title": "Target Response Time",
         "type": "timeseries"
       },
       {
@@ -214,7 +216,7 @@
               "axisLabel": "",
               "axisPlacement": "auto",
               "barAlignment": 0,
-              "drawStyle": "line",
+              "drawStyle": "bars",
               "fillOpacity": 0,
               "gradientMode": "none",
               "hideFrom": {
@@ -222,25 +224,23 @@
                 "tooltip": false,
                 "viz": false
               },
-              "lineInterpolation": "smooth",
+              "lineInterpolation": "stepAfter",
               "lineWidth": 1,
               "pointSize": 5,
               "scaleDistribution": {
-                "log": 10,
-                "type": "log"
+                "type": "linear"
               },
-              "showPoints": "auto",
+              "showPoints": "always",
               "spanNulls": true,
               "stacking": {
                 "group": "A",
                 "mode": "none"
               },
               "thresholdsStyle": {
-                "mode": "line+area"
+                "mode": "off"
               }
             },
             "mappings": [],
-            "max": 5000,
             "thresholds": {
               "mode": "absolute",
               "steps": [
@@ -250,7 +250,7 @@
                 },
                 {
                   "color": "red",
-                  "value": 3000
+                  "value": 80
                 }
               ]
             }
@@ -258,20 +258,15 @@
           "overrides": []
         },
         "gridPos": {
-          "h": 8,
+          "h": 10,
           "w": 12,
           "x": 0,
-          "y": 7
+          "y": 10
         },
-        "id": 19,
+        "id": 4,
         "options": {
           "legend": {
-            "calcs": [
-              "min",
-              "max",
-              "mean",
-              "lastNotNull"
-            ],
+            "calcs": [],
             "displayMode": "table",
             "placement": "bottom"
           },
@@ -282,13 +277,21 @@
         "targets": [
           {
             "exemplar": true,
-            "expr": "avg(amazonaws_com_AWS_RDS_DatabaseConnections{DBInstanceIdentifier=~\"$DBInstanceIdentifier\",DBInstanceIdentifier!=\"\"}) by (DBInstanceIdentifier)",
+            "expr": "avg(cloudwatch_aws_application_elb_active_connection_count_average{load_balancer=~\"$load_balancer\"}) by (load_balancer)",
             "interval": "",
-            "legendFormat": "{{DBInstanceIdentifier}}",
+            "legendFormat": "ActiveConnection - {{load_balancer}}",
             "refId": "A"
+          },
+          {
+            "exemplar": true,
+            "expr": "avg(cloudwatch_aws_application_elb_new_connection_count_average{load_balancer=~\"$load_balancer\"}) by (load_balancer)",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "NewConnection - {{load_balancer}}",
+            "refId": "B"
           }
         ],
-        "title": "Connections (Max 3000)",
+        "title": "Connection Count",
         "type": "timeseries"
       },
       {
@@ -345,18 +348,247 @@
           "overrides": []
         },
         "gridPos": {
-          "h": 8,
+          "h": 10,
           "w": 12,
           "x": 12,
-          "y": 7
+          "y": 10
         },
-        "id": 34,
+        "id": 8,
         "options": {
           "legend": {
             "calcs": [
-              "min",
-              "max",
+              "lastNotNull",
               "mean",
+              "sum"
+            ],
+            "displayMode": "table",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "avg(cloudwatch_aws_application_elb_healthy_host_count_average{load_balancer=~\"$load_balancer\"}) by (load_balancer)",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "Healthy Host - {{load_balancer}}",
+            "refId": "C"
+          },
+          {
+            "exemplar": true,
+            "expr": "avg(cloudwatch_aws_application_elb_un_healthy_host_count_average{load_balancer=~\"$load_balancer\"}) by (load_balancer)",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "UnHealthy Host - {{load_balancer}}",
+            "refId": "D"
+          }
+        ],
+        "title": "Host Health",
+        "type": "timeseries"
+      },
+      {
+        "datasource": null,
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "max": 100,
+            "min": 0,
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 12,
+          "x": 0,
+          "y": 20
+        },
+        "id": 6,
+        "options": {
+          "displayMode": "gradient",
+          "orientation": "horizontal",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "showUnfilled": true,
+          "text": {}
+        },
+        "pluginVersion": "8.2.6",
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(cloudwatch_aws_application_elb_client_tls_negotiation_error_count_sum{load_balancer=~\"$load_balancer\"}) by (load_balancer)",
+            "interval": "",
+            "legendFormat": "ClientTlsNegotiationError - {{load_balancer}}",
+            "refId": "A"
+          }
+        ],
+        "title": "TLS Negotiation Error",
+        "type": "bargauge"
+      },
+      {
+        "datasource": null,
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              }
+            },
+            "mappings": []
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 12,
+          "x": 12,
+          "y": 20
+        },
+        "id": 3,
+        "options": {
+          "displayLabels": [
+            "percent"
+          ],
+          "legend": {
+            "displayMode": "table",
+            "placement": "right",
+            "values": [
+              "value"
+            ]
+          },
+          "pieType": "donut",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(cloudwatch_aws_application_elb_http_code_target_5xx_count_sum{load_balancer=~\"$load_balancer\"}) by (load_balancer)",
+            "interval": "",
+            "legendFormat": "HTTPCode_Target_5XX - {{load_balancer}}",
+            "refId": "A"
+          },
+          {
+            "exemplar": true,
+            "expr": "sum(cloudwatch_aws_application_elb_http_code_target_4xx_count_sum{load_balancer=~\"$load_balancer\"}) by (load_balancer)",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "HTTPCode_Target_4XX - {{load_balancer}}",
+            "refId": "B"
+          },
+          {
+            "exemplar": true,
+            "expr": "sum(cloudwatch_aws_application_elb_http_code_target_3xx_count_sum{load_balancer=~\"$load_balancer\"}) by (load_balancer)",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "HTTPCode_Target_3XX - {{load_balancer}}",
+            "refId": "C"
+          },
+          {
+            "exemplar": true,
+            "expr": "sum(cloudwatch_aws_application_elb_http_code_target_2xx_count_sum{load_balancer=~\"$load_balancer\"}) by (load_balancer)",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "HTTPCode_Target_2XX - - {{load_balancer}}",
+            "refId": "D"
+          }
+        ],
+        "title": "HTTP Code Target",
+        "type": "piechart"
+      },
+      {
+        "datasource": null,
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "smooth",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 10,
+          "w": 12,
+          "x": 0,
+          "y": 29
+        },
+        "id": 5,
+        "options": {
+          "legend": {
+            "calcs": [
               "lastNotNull"
             ],
             "displayMode": "table",
@@ -369,13 +601,30 @@
         "targets": [
           {
             "exemplar": true,
-            "expr": "avg(amazonaws_com_AWS_RDS_RowLockTime{DBInstanceIdentifier=~\"$DBInstanceIdentifier\",DBInstanceIdentifier!=\"\"}) by (DBInstanceIdentifier)",
+            "expr": "avg(cloudwatch_aws_application_elb_grpc_request_count_sum{load_balancer=~\"$load_balancer\"}) by (load_balancer)",
+            "hide": false,
             "interval": "",
-            "legendFormat": "{{DBInstanceIdentifier}}",
+            "legendFormat": "GrpcRequest - {{load_balancer}}",
             "refId": "A"
+          },
+          {
+            "exemplar": true,
+            "expr": "avg(cloudwatch_aws_application_elb_non_sticky_request_count_average{load_balancer=~\"$load_balancer\"}) by (load_balancer)",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "NobStickyRequest - {{load_balancer}}",
+            "refId": "B"
+          },
+          {
+            "exemplar": true,
+            "expr": "avg(cloudwatch_aws_application_elb_grpc_request_count_sum{load_balancer=~\"$load_balancer\"}) by (load_balancer)",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "ProcessedBytes - {{load_balancer}}",
+            "refId": "C"
           }
         ],
-        "title": "Row Lock Time",
+        "title": "Processed Bytes",
         "type": "timeseries"
       },
       {
@@ -432,20 +681,15 @@
           "overrides": []
         },
         "gridPos": {
-          "h": 11,
-          "w": 24,
-          "x": 0,
-          "y": 15
+          "h": 9,
+          "w": 12,
+          "x": 12,
+          "y": 29
         },
-        "id": 38,
+        "id": 7,
         "options": {
           "legend": {
-            "calcs": [
-              "min",
-              "max",
-              "mean",
-              "lastNotNull"
-            ],
+            "calcs": [],
             "displayMode": "table",
             "placement": "bottom"
           },
@@ -456,13 +700,13 @@
         "targets": [
           {
             "exemplar": true,
-            "expr": "avg(amazonaws_com_AWS_RDS_CPUUtilization{DBClusterIdentifier!=\"\",Role!=\"\"}) by (Role,DBClusterIdentifier) ",
+            "expr": "sum(cloudwatch_aws_application_elb_rule_evaluations_sum{load_balancer=~\"$load_balancer\"}) by (load_balancer)",
             "interval": "",
-            "legendFormat": "{{Role}}>>{{DBClusterIdentifier}}",
+            "legendFormat": "RuleEvaluations - {{load_balancer}}",
             "refId": "A"
           }
         ],
-        "title": "DB CPU Utilization % (All Role)",
+        "title": "Rule Evaluations",
         "type": "timeseries"
       }
     ],
@@ -473,7 +717,7 @@
     "templating": {
       "list": [
         {
-          "allValue": ".*",
+          "allValue": null,
           "current": {
             "selected": true,
             "text": [
@@ -484,17 +728,17 @@
             ]
           },
           "datasource": null,
-          "definition": "label_values(DBInstanceIdentifier)",
+          "definition": "label_values(load_balancer)",
           "description": null,
           "error": null,
           "hide": 0,
           "includeAll": true,
-          "label": "DB Instance Identifier",
+          "label": "Load Balancer Name",
           "multi": true,
-          "name": "DBInstanceIdentifier",
+          "name": "load_balancer",
           "options": [],
           "query": {
-            "query": "label_values(DBInstanceIdentifier)",
+            "query": "label_values(load_balancer)",
             "refId": "StandardVariableQuery"
           },
           "refresh": 1,
@@ -506,12 +750,12 @@
       ]
     },
     "time": {
-      "from": "now-90d",
+      "from": "now-1h",
       "to": "now"
     },
     "timepicker": {},
     "timezone": "",
-    "title": "RDS  Dashboard by DB Instance Identifier (Metric Stream)",
-    "uid": "AhM9WsM9a",
-    "version": 3
+    "title": "CloudWatch - Application Load Balancer",
+    "uid": "J79q4-n4z",
+    "version": 7
   }

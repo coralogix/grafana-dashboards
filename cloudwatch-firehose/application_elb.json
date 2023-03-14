@@ -610,7 +610,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "[POC] AWS - ELB Application Load Balancer",
+  "title": "CloudWatch - Application Load Balancer",
   "uid": "J79q4-n4z",
   "version": 19
 }

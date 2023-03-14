@@ -1,8 +1,7 @@
 # Coralogix Grafana dashboards and more
 
-A place for all dashboards that dont have a specific integration.
+A place for the grafana dashboards split into a data source and collector type (datasource-collector)
 
-all dashboards split into two categories based on the source of the data:
-
-- aws cloudwatch
-- prometheus
+- cloudwatch-firehose
+- cloudWatch-telegraf
+- k8s-prometheus

@@ -22,8 +22,8 @@
     "fiscalYearStartMonth": 0,
     "gnetId": null,
     "graphTooltip": 0,
-    "id": 935,
-    "iteration": 1671002605052,
+    "id": 939,
+    "iteration": 1671024457351,
     "links": [],
     "liveNow": false,
     "panels": [
@@ -77,7 +77,7 @@
         "targets": [
           {
             "exemplar": true,
-            "expr": "count(cloudwatch_aws_elasti_cache_is_master_sum{cache_cluster_id!=\"\",cache_node_id=\"\"})",
+            "expr": "count(amazonaws_com_AWS_ElastiCache_IsMaster_sum{CacheClusterId!=\"\",CacheNodeId=\"\"})",
             "interval": "",
             "legendFormat": "",
             "refId": "A"
@@ -144,7 +144,7 @@
         "targets": [
           {
             "exemplar": true,
-            "expr": "(sum(cloudwatch_aws_elasti_cache_cache_misses_sum{})/(sum(cloudwatch_aws_elasti_cache_cache_hits_sum{})+sum(cloudwatch_aws_elasti_cache_cache_misses_sum{})))*100",
+            "expr": "(sum(amazonaws_com_AWS_ElastiCache_CacheMisses_sum{})/(sum(amazonaws_com_AWS_ElastiCache_CacheHits_sum{})+sum(amazonaws_com_AWS_ElastiCache_CacheMisses_sum{})))*100",
             "interval": "",
             "legendFormat": "",
             "refId": "A"
@@ -229,9 +229,9 @@
         "targets": [
           {
             "exemplar": true,
-            "expr": "sum(cloudwatch_aws_elasti_cache_curr_connections_sum{cache_cluster_id!=\"\",cache_node_id=\"\",cache_cluster_id=~\"$cache_cluster_id\"}) by (cache_cluster_id)",
+            "expr": "sum(amazonaws_com_AWS_ElastiCache_CurrConnections_sum{CacheClusterId!=\"\",CacheNodeId=\"\",CacheClusterId=~\"$CacheClusterId\"}) by (CacheClusterId)",
             "interval": "",
-            "legendFormat": "{{cache_cluster_id}}",
+            "legendFormat": "{{CacheClusterId}}",
             "refId": "A"
           }
         ],
@@ -313,9 +313,9 @@
         "targets": [
           {
             "exemplar": true,
-            "expr": "sum(cloudwatch_aws_elasti_cache_network_bytes_out_sum{cache_cluster_id!=\"\",cache_node_id=\"\",cache_cluster_id=~\"$cache_cluster_id\"}) by (cache_cluster_id)",
+            "expr": "sum(amazonaws_com_AWS_ElastiCache_NetworkBytesOut_sum{CacheClusterId!=\"\",CacheClusterId=~\"$CacheClusterId\",CacheNodeId=\"\"}) by (CacheClusterId)",
             "interval": "",
-            "legendFormat": "{{cache_cluster_id}}",
+            "legendFormat": "{{CacheClusterId}}",
             "refId": "A"
           }
         ],
@@ -401,14 +401,14 @@
         "targets": [
           {
             "exemplar": true,
-            "expr": "sum(cloudwatch_aws_elasti_cache_cache_hits_sum{})",
+            "expr": "sum(amazonaws_com_AWS_ElastiCache_CacheHits_sum{})",
             "interval": "",
             "legendFormat": "Cache Hits",
             "refId": "A"
           },
           {
             "exemplar": true,
-            "expr": "sum(cloudwatch_aws_elasti_cache_cache_misses_sum{})",
+            "expr": "sum(amazonaws_com_AWS_ElastiCache_CacheMisses_sum{})",
             "hide": false,
             "interval": "",
             "legendFormat": "Cache Misses",
@@ -497,14 +497,14 @@
         "targets": [
           {
             "exemplar": true,
-            "expr": "sum(cloudwatch_aws_elasti_cache_get_type_cmds_sum{cache_cluster_id!=\"\",cache_node_id=\"\"})",
+            "expr": "sum(amazonaws_com_AWS_ElastiCache_GetTypeCmds_sum{CacheClusterId!=\"\",CacheNodeId=\"\"})",
             "interval": "",
             "legendFormat": "Read",
             "refId": "A"
           },
           {
             "exemplar": true,
-            "expr": "sum(cloudwatch_aws_elasti_cache_set_type_cmds_sum{cache_cluster_id!=\"\",cache_node_id=\"\"})",
+            "expr": "sum(amazonaws_com_AWS_ElastiCache_SetTypeCmds_sum{CacheClusterId!=\"\",CacheNodeId=\"\"})",
             "hide": false,
             "interval": "",
             "legendFormat": "Write",
@@ -589,9 +589,9 @@
         "targets": [
           {
             "exemplar": true,
-            "expr": "sum(cloudwatch_aws_elasti_cache_curr_items_average{cache_cluster_id!=\"\",cache_node_id=\"\",cache_cluster_id=~\"$cache_cluster_id\"}) by (cache_cluster_id)",
+            "expr": "avg(amazonaws_com_AWS_ElastiCache_CurrItems_sum{CacheClusterId!=\"\",CacheNodeId=\"\",CacheClusterId=~\"$CacheClusterId\"}) by (CacheClusterId)",
             "interval": "",
-            "legendFormat": "{{cache_cluster_id}}",
+            "legendFormat": "{{CacheClusterId}}",
             "refId": "A"
           }
         ],
@@ -678,9 +678,9 @@
         "targets": [
           {
             "exemplar": true,
-            "expr": "sum(cloudwatch_aws_elasti_cache_bytes_used_for_cache_sum{cache_cluster_id!=\"\",cache_node_id=\"\",cache_cluster_id=~\"$cache_cluster_id\"}) by (cache_cluster_id)",
+            "expr": "sum(amazonaws_com_AWS_ElastiCache_BytesUsedForCache_sum{CacheClusterId!=\"\",CacheNodeId=\"\",CacheClusterId=~\"$CacheClusterId\"}) by (CacheClusterId)",
             "interval": "",
-            "legendFormat": "{{cache_cluster_id}}",
+            "legendFormat": "{{CacheClusterId}}",
             "refId": "A"
           }
         ],
@@ -767,9 +767,9 @@
         "targets": [
           {
             "exemplar": true,
-            "expr": "avg(cloudwatch_aws_elasti_cache_replication_lag_average{cache_cluster_id!=\"\",cache_node_id=\"\",cache_cluster_id=~\"$cache_cluster_id\"}) by (cache_cluster_id)",
+            "expr": "avg(amazonaws_com_AWS_ElastiCache_ReplicationLag{CacheClusterId!=\"\",CacheNodeId=\"\",CacheClusterId=~\"$CacheClusterId\"}) by (CacheClusterId)",
             "interval": "",
-            "legendFormat": "{{cache_cluster_id}}",
+            "legendFormat": "{{CacheClusterId}}",
             "refId": "A"
           }
         ],
@@ -856,13 +856,198 @@
         "targets": [
           {
             "exemplar": true,
-            "expr": "avg(cloudwatch_aws_elasti_cache_database_memory_usage_percentage_average{cache_node_id!=\"\",cache_node_id=~\"$cache_node_id\"}) by (cache_node_id)",
+            "expr": "avg(amazonaws_com_AWS_ElastiCache_DatabaseMemoryUsagePercentage{CacheNodeId!=\"\",CacheNodeId=~\"$CacheNodeId\"}) by (CacheNodeId)",
             "interval": "",
-            "legendFormat": "Node: {{cache_node_id}}",
+            "legendFormat": "Node: {{CacheNodeId}}",
             "refId": "A"
           }
         ],
-        "title": "Memory Usage",
+        "title": "Memory Usage (Node)",
+        "type": "timeseries"
+      },
+      {
+        "datasource": null,
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "smooth",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 40
+                }
+              ]
+            },
+            "unit": "percent"
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 12,
+          "x": 12,
+          "y": 33
+        },
+        "id": 13,
+        "options": {
+          "legend": {
+            "calcs": [
+              "lastNotNull",
+              "min",
+              "max",
+              "mean"
+            ],
+            "displayMode": "table",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "pluginVersion": "8.2.6",
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "avg(amazonaws_com_AWS_ElastiCache_DatabaseMemoryUsagePercentage{CacheClusterId!=\"\",CacheClusterId=~\"$CacheClusterId\"}) by (CacheClusterId)",
+            "interval": "",
+            "legendFormat": "Cluster: {{CacheClusterId}}",
+            "refId": "A"
+          }
+        ],
+        "title": "Memory Usage (Cluster)",
+        "type": "timeseries"
+      },
+      {
+        "datasource": null,
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "Percent",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "smooth",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": true,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 40
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 12,
+          "x": 0,
+          "y": 42
+        },
+        "id": 9,
+        "options": {
+          "legend": {
+            "calcs": [
+              "lastNotNull",
+              "min",
+              "max",
+              "mean"
+            ],
+            "displayMode": "table",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "pluginVersion": "8.2.6",
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "avg(amazonaws_com_AWS_ElastiCache_EngineCPUUtilization{CacheNodeId!=\"\",CacheNodeId=~\"$CacheNodeId\"}) by (CacheNodeId)",
+            "interval": "",
+            "legendFormat": "Server: {{CacheNodeId}}",
+            "refId": "A"
+          },
+          {
+            "exemplar": true,
+            "expr": "avg(amazonaws_com_AWS_ElastiCache_CPUUtilization{CacheNodeId!=\"\",CacheNodeId=~\"$CacheNodeId\"}) by (CacheNodeId)",
+            "hide": false,
+            "interval": "",
+            "legendFormat": "Redis: {{CacheNodeId}}",
+            "refId": "B"
+          }
+        ],
+        "title": "CPU Utilization by Node",
         "type": "timeseries"
       },
       {
@@ -922,9 +1107,9 @@
           "h": 9,
           "w": 12,
           "x": 12,
-          "y": 33
+          "y": 42
         },
-        "id": 9,
+        "id": 14,
         "options": {
           "legend": {
             "calcs": [
@@ -944,17 +1129,17 @@
         "targets": [
           {
             "exemplar": true,
-            "expr": "avg(cloudwatch_aws_elasti_cache_engine_cpu_utilization_average{cache_cluster_id!=\"\",cache_node_id=\"\",cache_cluster_id=~\"$cache_cluster_id\"}) by (cache_cluster_id)",
+            "expr": "avg(amazonaws_com_AWS_ElastiCache_EngineCPUUtilization{CacheClusterId!=\"\",CacheNodeId=\"\",CacheClusterId=~\"$CacheClusterId\"}) by (CacheClusterId)",
             "interval": "",
-            "legendFormat": "Server: {{cache_cluster_id}}",
+            "legendFormat": "Server: {{CacheClusterId}}",
             "refId": "A"
           },
           {
             "exemplar": true,
-            "expr": "avg(cloudwatch_aws_elasti_cache_cpu_utilization_average{cache_cluster_id!=\"\",cache_node_id=\"\",cache_cluster_id=~\"$cache_cluster_id\"}) by (cache_cluster_id)",
+            "expr": "avg(amazonaws_com_AWS_ElastiCache_CPUUtilization{CacheClusterId!=\"\",CacheNodeId=\"\",CacheClusterId=~\"$CacheClusterId\"}) by (CacheClusterId)",
             "hide": false,
             "interval": "",
-            "legendFormat": "Redis: {{cache_cluster_id}}",
+            "legendFormat": "Redis: {{CacheClusterId}}",
             "refId": "B"
           }
         ],
@@ -972,24 +1157,26 @@
           "current": {
             "selected": true,
             "text": [
-              "All"
+              "dee1bkfincziv3f0-001",
+              "dee1wgllbq5gxltr-001"
             ],
             "value": [
-              "$__all"
+              "dee1bkfincziv3f0-001",
+              "dee1wgllbq5gxltr-001"
             ]
           },
           "datasource": null,
-          "definition": "label_values(cache_cluster_id)",
+          "definition": "label_values(CacheClusterId)",
           "description": null,
           "error": null,
           "hide": 0,
           "includeAll": true,
           "label": "Cache Cluster Id",
           "multi": true,
-          "name": "cache_cluster_id",
+          "name": "CacheClusterId",
           "options": [],
           "query": {
-            "query": "label_values(cache_cluster_id)",
+            "query": "label_values(CacheClusterId)",
             "refId": "StandardVariableQuery"
           },
           "refresh": 1,
@@ -1001,22 +1188,26 @@
         {
           "allValue": ".*",
           "current": {
-            "selected": false,
-            "text": "All",
-            "value": "$__all"
+            "selected": true,
+            "text": [
+              "0001"
+            ],
+            "value": [
+              "0001"
+            ]
           },
           "datasource": null,
-          "definition": "label_values(cache_node_id)",
+          "definition": "label_values(CacheNodeId)",
           "description": null,
           "error": null,
           "hide": 0,
           "includeAll": true,
           "label": "Cache Node Id",
           "multi": true,
-          "name": "cache_node_id",
+          "name": "CacheNodeId",
           "options": [],
           "query": {
-            "query": "label_values(cache_node_id)",
+            "query": "label_values(CacheNodeId)",
             "refId": "StandardVariableQuery"
           },
           "refresh": 1,
@@ -1028,12 +1219,12 @@
       ]
     },
     "time": {
-      "from": "now-1h",
+      "from": "now-90d",
       "to": "now"
     },
     "timepicker": {},
     "timezone": "",
-    "title": "Elasticache Dashboard",
-    "uid": "Uh9aSbH9k",
+    "title": "CloudWatch - ElastiCache v1",
+    "uid": "Ec9aCwH9e",
     "version": 4
   }

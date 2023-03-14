@@ -511,7 +511,7 @@
     },
     "timepicker": {},
     "timezone": "",
-    "title": "RDS Dashboard by DB Instance Identifier",
+    "title": "CloudWatch - RDS by DB Instance",
     "uid": "ZHm9CwN9z",
     "version": 7
   }

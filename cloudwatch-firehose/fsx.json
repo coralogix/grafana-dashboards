@@ -22,12 +22,14 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 745,
+  "id": 1510,
+  "iteration": 1669725365435,
   "links": [],
   "liveNow": false,
   "panels": [
     {
       "datasource": null,
+      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -47,8 +49,8 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
-        "w": 6,
+        "h": 3,
+        "w": 2,
         "x": 0,
         "y": 0
       },
@@ -60,7 +62,7 @@
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
-            "lastNotNull"
+            "max"
           ],
           "fields": "",
           "values": false
@@ -72,13 +74,13 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "(avg_over_time(amazonaws_com_AWS_DynamoDB_AccountMaxTableLevelReads{quantile=\"1\"}[1m])) ",
+          "expr": "count(count(amazonaws_com_AWS_FSx_DataReadBytes{FileSystemId=~\"$FileSystemId\"}) by (FileSystemId))",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "title": "Max Table Level Reads: Average",
+      "title": "Filesystems",
       "type": "stat"
     },
     {
@@ -98,17 +100,75 @@
                 "value": null
               }
             ]
-          }
+          },
+          "unit": "decbytes"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
-        "w": 6,
+        "h": 3,
+        "w": 4,
+        "x": 2,
+        "y": 0
+      },
+      "id": 14,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "max"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.2.6",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "min(amazonaws_com_AWS_FSx_FreeDataStorageCapacity{FileSystemId=~\"$FileSystemId\"})",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Minimum free capacity",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
         "x": 6,
         "y": 0
       },
-      "id": 3,
+      "id": 15,
       "options": {
         "colorMode": "value",
         "graphMode": "none",
@@ -116,7 +176,7 @@
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
-            "lastNotNull"
+            "max"
           ],
           "fields": "",
           "values": false
@@ -128,13 +188,13 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg_over_time(amazonaws_com_AWS_DynamoDB_AccountMaxTableLevelWrites{quantile=\"1\"}[1m])",
+          "expr": "max(amazonaws_com_AWS_FSx_MetadataOperations{FileSystemId=~\"$FileSystemId\"})",
           "interval": "",
-          "legendFormat": "{{TableName}}",
+          "legendFormat": "",
           "refId": "A"
         }
       ],
-      "title": "Max Table Level Write: Average",
+      "title": "Maximum metadata operations",
       "type": "stat"
     },
     {
@@ -147,33 +207,25 @@
           },
           "mappings": [],
           "thresholds": {
-            "mode": "percentage",
+            "mode": "absolute",
             "steps": [
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "#EAB839",
-                "value": 90
-              },
-              {
-                "color": "red",
-                "value": 95
               }
             ]
           },
-          "unit": "percent"
+          "unit": "short"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
-        "w": 6,
-        "x": 12,
+        "h": 3,
+        "w": 4,
+        "x": 10,
         "y": 0
       },
-      "id": 7,
+      "id": 18,
       "options": {
         "colorMode": "value",
         "graphMode": "none",
@@ -181,7 +233,7 @@
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
-            "lastNotNull"
+            "sum"
           ],
           "fields": "",
           "values": false
@@ -193,13 +245,13 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg(amazonaws_com_AWS_DynamoDB_AccountProvisionedReadCapacityUtilization{quantile=\"1\"})",
+          "expr": "sum(amazonaws_com_AWS_FSx_DataReadOperations{FileSystemId=~\"$FileSystemId\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "title": "Provisioned Read Capacity Utilization: Average",
+      "title": "Read operations",
       "type": "stat"
     },
     {
@@ -212,33 +264,25 @@
           },
           "mappings": [],
           "thresholds": {
-            "mode": "percentage",
+            "mode": "absolute",
             "steps": [
               {
                 "color": "green",
                 "value": null
-              },
-              {
-                "color": "#EAB839",
-                "value": 90
-              },
-              {
-                "color": "red",
-                "value": 95
               }
             ]
           },
-          "unit": "percent"
+          "unit": "decbytes"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 6,
-        "w": 6,
-        "x": 18,
+        "h": 3,
+        "w": 3,
+        "x": 14,
         "y": 0
       },
-      "id": 12,
+      "id": 16,
       "options": {
         "colorMode": "value",
         "graphMode": "none",
@@ -246,7 +290,7 @@
         "orientation": "auto",
         "reduceOptions": {
           "calcs": [
-            "lastNotNull"
+            "sum"
           ],
           "fields": "",
           "values": false
@@ -258,14 +302,142 @@
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg(amazonaws_com_AWS_DynamoDB_AccountProvisionedReadCapacityUtilization_sum)",
+          "expr": "sum(amazonaws_com_AWS_FSx_DataReadBytes{FileSystemId=~\"$FileSystemId\"})",
           "interval": "",
           "legendFormat": "",
           "refId": "A"
         }
       ],
-      "title": "Provisioned Read Capacity Utilization: Average",
+      "title": "Bytes read",
       "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "short"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 4,
+        "x": 17,
+        "y": 0
+      },
+      "id": 19,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.2.6",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(amazonaws_com_AWS_FSx_DataWriteBytes{FileSystemId=~\"$FileSystemId\"})",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Write operations",
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 3,
+        "w": 3,
+        "x": 21,
+        "y": 0
+      },
+      "id": 17,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.2.6",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(amazonaws_com_AWS_FSx_DataWriteBytes{FileSystemId=~\"$FileSystemId\"})",
+          "interval": "",
+          "legendFormat": "",
+          "refId": "A"
+        }
+      ],
+      "title": "Bytes written",
+      "type": "stat"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 3
+      },
+      "id": 4,
+      "panels": [],
+      "title": "General",
+      "type": "row"
     },
     {
       "datasource": null,
@@ -278,15 +450,15 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "bars",
+            "drawStyle": "line",
             "fillOpacity": 0,
-            "gradientMode": "hue",
+            "gradientMode": "none",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
             },
-            "lineInterpolation": "linear",
+            "lineInterpolation": "smooth",
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
@@ -296,7 +468,7 @@
             "spanNulls": false,
             "stacking": {
               "group": "A",
-              "mode": "normal"
+              "mode": "none"
             },
             "thresholdsStyle": {
               "mode": "off"
@@ -315,214 +487,42 @@
                 "value": 80
               }
             ]
-          }
+          },
+          "unit": "decbytes"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 8,
+        "h": 9,
         "w": 12,
         "x": 0,
-        "y": 6
+        "y": 4
       },
-      "id": 5,
+      "id": 12,
       "options": {
         "legend": {
-          "calcs": [
-            "min",
-            "max",
-            "mean",
-            "sum",
-            "lastNotNull"
-          ],
-          "displayMode": "table",
+          "calcs": [],
+          "displayMode": "list",
           "placement": "bottom"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "multi"
         }
       },
       "targets": [
         {
           "exemplar": true,
-          "expr": "sum(amazonaws_com_AWS_DynamoDB_SystemErrors_sum) by (Operation)",
+          "expr": "avg(amazonaws_com_AWS_FSx_FreeDataStorageCapacity{FileSystemId=~\"$FileSystemId\"}) by (FileSystemId)",
           "interval": "",
-          "legendFormat": "{{Operation}}",
+          "legendFormat": "{{FileSystemId}}",
           "refId": "A"
         }
       ],
-      "title": "ProvisionedReadCapacityUnits: Average",
+      "title": "FSx Free Capacity by Filesystem",
       "type": "timeseries"
     },
     {
       "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "opacity",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "smooth",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 12,
-        "x": 12,
-        "y": 6
-      },
-      "id": 4,
-      "options": {
-        "legend": {
-          "calcs": [
-            "min",
-            "max",
-            "mean",
-            "lastNotNull"
-          ],
-          "displayMode": "table",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "sum(amazonaws_com_AWS_DynamoDB_ConsumedReadCapacityUnits{quantile=\"1\"}) by (TableName)",
-          "interval": "",
-          "legendFormat": "{{TableName}}",
-          "refId": "A"
-        }
-      ],
-      "title": "Consumed Read Capacity Units: Sum by Table",
-      "type": "timeseries"
-    },
-    {
-      "datasource": null,
-      "description": "",
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "palette-classic"
-          },
-          "custom": {
-            "axisLabel": "",
-            "axisPlacement": "auto",
-            "barAlignment": 0,
-            "drawStyle": "line",
-            "fillOpacity": 0,
-            "gradientMode": "hue",
-            "hideFrom": {
-              "legend": false,
-              "tooltip": false,
-              "viz": false
-            },
-            "lineInterpolation": "smooth",
-            "lineWidth": 1,
-            "pointSize": 5,
-            "scaleDistribution": {
-              "type": "linear"
-            },
-            "showPoints": "auto",
-            "spanNulls": true,
-            "stacking": {
-              "group": "A",
-              "mode": "none"
-            },
-            "thresholdsStyle": {
-              "mode": "off"
-            }
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          }
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 8,
-        "w": 24,
-        "x": 0,
-        "y": 14
-      },
-      "id": 6,
-      "options": {
-        "legend": {
-          "calcs": [
-            "min",
-            "max",
-            "mean",
-            "lastNotNull"
-          ],
-          "displayMode": "table",
-          "placement": "bottom"
-        },
-        "tooltip": {
-          "mode": "single"
-        }
-      },
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "sum(amazonaws_com_AWS_DynamoDB_ConsumedWriteCapacityUnits{quantile=\"1\"}) by (TableName)",
-          "interval": "",
-          "legendFormat": "{{TableName}}",
-          "refId": "A"
-        }
-      ],
-      "title": "Consumed Write Capacity Units: Sum by Table",
-      "type": "timeseries"
-    },
-    {
-      "datasource": null,
-      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -544,11 +544,10 @@
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
-              "log": 10,
-              "type": "log"
+              "type": "linear"
             },
             "showPoints": "auto",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -564,6 +563,109 @@
               {
                 "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 9,
+        "w": 12,
+        "x": 12,
+        "y": 4
+      },
+      "id": 13,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "sum"
+          ],
+          "displayMode": "table",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "avg(amazonaws_com_AWS_FSx_MetadataOperations{FileSystemId=~\"$FileSystemId\"}) by (FileSystemId)",
+          "interval": "",
+          "legendFormat": "{{FileSystemId}}",
+          "refId": "A"
+        }
+      ],
+      "title": "FSx Meta Operations by Filesystem",
+      "type": "timeseries"
+    },
+    {
+      "collapsed": false,
+      "datasource": null,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 13
+      },
+      "id": 6,
+      "panels": [],
+      "title": "Read/Write",
+      "type": "row"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           },
@@ -572,42 +674,39 @@
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
-        "w": 24,
+        "h": 8,
+        "w": 12,
         "x": 0,
-        "y": 22
+        "y": 14
       },
       "id": 8,
       "options": {
         "legend": {
           "calcs": [
-            "min",
-            "max",
             "mean",
-            "lastNotNull"
+            "sum"
           ],
           "displayMode": "table",
-          "placement": "bottom"
+          "placement": "right"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "multi"
         }
       },
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg(amazonaws_com_AWS_DynamoDB_ReturnedBytes_sum{}) by (TableName,Operation)",
+          "expr": "sum(amazonaws_com_AWS_FSx_DataReadBytes{FileSystemId=~\"$FileSystemId\"}) by (FileSystemId)",
           "interval": "",
-          "legendFormat": "{{TableName}}-{{Operation}}",
+          "legendFormat": "{{FileSystemId}}",
           "refId": "A"
         }
       ],
-      "title": "Returned Bytes: Average by Table and Operation",
+      "title": "FSx Data Read bytes by Filesystem",
       "type": "timeseries"
     },
     {
       "datasource": null,
-      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -618,7 +717,7 @@
             "axisPlacement": "auto",
             "barAlignment": 0,
             "drawStyle": "line",
-            "fillOpacity": 50,
+            "fillOpacity": 0,
             "gradientMode": "none",
             "hideFrom": {
               "legend": false,
@@ -626,17 +725,13 @@
               "viz": false
             },
             "lineInterpolation": "smooth",
-            "lineStyle": {
-              "fill": "solid"
-            },
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
-              "log": 10,
-              "type": "log"
+              "type": "linear"
             },
             "showPoints": "auto",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -652,50 +747,51 @@
               {
                 "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           },
-          "unit": "ms"
+          "unit": "decbytes"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
-        "w": 24,
-        "x": 0,
-        "y": 31
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 14
       },
       "id": 10,
       "options": {
         "legend": {
           "calcs": [
-            "min",
-            "max",
             "mean",
-            "lastNotNull"
+            "sum"
           ],
           "displayMode": "table",
-          "placement": "bottom"
+          "placement": "right"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "multi"
         }
       },
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg(amazonaws_com_AWS_DynamoDB_SuccessfulRequestLatency{quantile=\"1\"}) by (TableName,Operation)",
+          "expr": "sum(amazonaws_com_AWS_FSx_DataWriteBytes{FileSystemId=~\"$FileSystemId\"}) by (FileSystemId)",
           "interval": "",
-          "legendFormat": "{{TableName}}-{{Operation}}",
+          "legendFormat": "{{FileSystemId}}",
           "refId": "A"
         }
       ],
-      "title": "Successful Request Latency: Average by Table and Operation",
+      "title": "FSx Data Write bytes by Filesystem",
       "type": "timeseries"
     },
     {
       "datasource": null,
-      "description": "",
       "fieldConfig": {
         "defaults": {
           "color": {
@@ -705,25 +801,22 @@
             "axisLabel": "",
             "axisPlacement": "auto",
             "barAlignment": 0,
-            "drawStyle": "points",
-            "fillOpacity": 50,
-            "gradientMode": "opacity",
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
             "hideFrom": {
               "legend": false,
               "tooltip": false,
               "viz": false
             },
             "lineInterpolation": "smooth",
-            "lineStyle": {
-              "fill": "solid"
-            },
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
               "type": "linear"
             },
             "showPoints": "auto",
-            "spanNulls": true,
+            "spanNulls": false,
             "stacking": {
               "group": "A",
               "mode": "none"
@@ -739,62 +832,180 @@
               {
                 "color": "green",
                 "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
               }
             ]
           },
-          "unit": "none"
+          "unit": "locale"
         },
         "overrides": []
       },
       "gridPos": {
-        "h": 9,
-        "w": 24,
+        "h": 8,
+        "w": 12,
         "x": 0,
-        "y": 40
+        "y": 22
       },
-      "id": 11,
+      "id": 9,
       "options": {
         "legend": {
           "calcs": [
-            "min",
-            "max",
             "mean",
-            "lastNotNull"
+            "sum"
           ],
-          "displayMode": "list",
-          "placement": "bottom"
+          "displayMode": "table",
+          "placement": "right"
         },
         "tooltip": {
-          "mode": "single"
+          "mode": "multi"
         }
       },
       "targets": [
         {
           "exemplar": true,
-          "expr": "avg(amazonaws_com_AWS_DynamoDB_TimeToLiveDeletedItemCount_count{}) by (TableName)",
+          "expr": "avg(amazonaws_com_AWS_FSx_DataReadOperations{FileSystemId=~\"$FileSystemId\"}) by (FileSystemId)",
           "interval": "",
-          "legendFormat": "{{TableName}}",
+          "legendFormat": "{{FileSystemId}}",
           "refId": "A"
         }
       ],
-      "title": "amazonTTL DeletedItem Count: Average by Table",
+      "title": "FSx Data Reads Operations by Filesystem",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 8,
+        "w": 12,
+        "x": 12,
+        "y": 22
+      },
+      "id": 11,
+      "options": {
+        "legend": {
+          "calcs": [
+            "mean",
+            "sum"
+          ],
+          "displayMode": "table",
+          "placement": "right"
+        },
+        "tooltip": {
+          "mode": "multi"
+        }
+      },
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "avg(amazonaws_com_AWS_FSx_DataWriteOperations{FileSystemId=~\"$FileSystemId\"}) by (FileSystemId)",
+          "interval": "",
+          "legendFormat": "{{FileSystemId}}",
+          "refId": "A"
+        }
+      ],
+      "title": "FSx Data Write Operations by Filesystem",
       "type": "timeseries"
     }
   ],
-  "refresh": "",
   "schemaVersion": 32,
   "style": "dark",
   "tags": [],
   "templating": {
-    "list": []
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "datasource": null,
+        "definition": "label_values(FileSystemId)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "Filesystem ID",
+        "multi": true,
+        "name": "FileSystemId",
+        "options": [],
+        "query": {
+          "query": "label_values(FileSystemId)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
   },
   "time": {
-    "from": "now-12h",
+    "from": "now-6h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
-  "title": "[POC] AWS - DynamoDB",
-  "uid": "43FQ2jRVk",
-  "version": 3
+  "title": "CloudWatch - FSx",
+  "uid": "Xe0aHbd4z",
+  "version": 5
 }

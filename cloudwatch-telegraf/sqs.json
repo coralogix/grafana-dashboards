@@ -22,17 +22,102 @@
     "fiscalYearStartMonth": 0,
     "gnetId": null,
     "graphTooltip": 0,
-    "id": 939,
-    "iteration": 1671024457351,
+    "id": 472,
+    "iteration": 1678733706542,
     "links": [],
     "liveNow": false,
     "panels": [
       {
         "datasource": null,
+        "description": "",
         "fieldConfig": {
           "defaults": {
             "color": {
               "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 4,
+          "x": 0,
+          "y": 0
+        },
+        "id": 4,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {},
+          "textMode": "auto"
+        },
+        "pluginVersion": "8.2.6",
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(cloudwatch_aws_sqs_number_of_messages_sent_sum{queue_name=~\"$queue_name\"})",
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Average number of messages sent",
+        "type": "stat"
+      },
+      {
+        "datasource": null,
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
             },
             "mappings": [],
             "thresholds": {
@@ -52,12 +137,622 @@
           "overrides": []
         },
         "gridPos": {
-          "h": 6,
-          "w": 6,
-          "x": 0,
+          "h": 9,
+          "w": 8,
+          "x": 4,
           "y": 0
         },
+        "id": 12,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "avg(cloudwatch_aws_sqs_number_of_messages_sent_average{queue_name=~\"$queue_name\"}) by (queue_name)",
+            "interval": "",
+            "legendFormat": "{{queue_name}}",
+            "refId": "A"
+          }
+        ],
+        "title": "Average number of messages sent",
+        "type": "timeseries"
+      },
+      {
+        "datasource": null,
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 4,
+          "x": 12,
+          "y": 0
+        },
+        "id": 11,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {},
+          "textMode": "auto"
+        },
+        "pluginVersion": "8.2.6",
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(cloudwatch_aws_sqs_number_of_messages_received_sum{queue_name=~\"$queue_name\"})",
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Average number of messages received",
+        "type": "stat"
+      },
+      {
+        "datasource": null,
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 8,
+          "x": 16,
+          "y": 0
+        },
+        "id": 3,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "avg(cloudwatch_aws_sqs_number_of_messages_received_average{queue_name=~\"$queue_name\"}) by (queue_name)",
+            "interval": "",
+            "legendFormat": "{{queue_name}}",
+            "refId": "A"
+          }
+        ],
+        "title": "Average number of messages received",
+        "type": "timeseries"
+      },
+      {
+        "datasource": null,
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 4,
+          "x": 0,
+          "y": 9
+        },
+        "id": 13,
+        "options": {
+          "colorMode": "value",
+          "graphMode": "area",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {},
+          "textMode": "auto"
+        },
+        "pluginVersion": "8.2.6",
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(cloudwatch_aws_sqs_number_of_messages_deleted_sum{queue_name=~\"$queue_name\"})",
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Average number of messages deleted",
+        "type": "stat"
+      },
+      {
+        "datasource": null,
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 8,
+          "x": 4,
+          "y": 9
+        },
         "id": 2,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "avg(cloudwatch_aws_sqs_number_of_messages_deleted_average{queue_name=~\"$queue_name\"}) by (queue_name)",
+            "interval": "",
+            "legendFormat": "{{queue_name}}",
+            "refId": "A"
+          }
+        ],
+        "title": "Average number of messages deleted",
+        "type": "timeseries"
+      },
+      {
+        "datasource": null,
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 4,
+          "x": 12,
+          "y": 9
+        },
+        "id": 14,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {},
+          "textMode": "auto"
+        },
+        "pluginVersion": "8.2.6",
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(cloudwatch_aws_sqs_approximate_number_of_messages_visible_sum{queue_name=~\"$queue_name\"})",
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Average number of messages visible",
+        "type": "stat"
+      },
+      {
+        "datasource": null,
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 8,
+          "x": 16,
+          "y": 9
+        },
+        "id": 9,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "avg(cloudwatch_aws_sqs_approximate_number_of_messages_visible_average{queue_name=~\"$queue_name\"}) by (queue_name)",
+            "interval": "",
+            "legendFormat": "{{queue_name}}",
+            "refId": "A"
+          }
+        ],
+        "title": "Average number of messages visible",
+        "type": "timeseries"
+      },
+      {
+        "datasource": null,
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 4,
+          "x": 0,
+          "y": 18
+        },
+        "id": 15,
+        "options": {
+          "colorMode": "none",
+          "graphMode": "none",
+          "justifyMode": "auto",
+          "orientation": "auto",
+          "reduceOptions": {
+            "calcs": [
+              "lastNotNull"
+            ],
+            "fields": "",
+            "values": false
+          },
+          "text": {},
+          "textMode": "auto"
+        },
+        "pluginVersion": "8.2.6",
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "sum(cloudwatch_aws_sqs_approximate_number_of_messages_not_visible_sum{queue_name=~\"$queue_name\"})",
+            "interval": "",
+            "legendFormat": "",
+            "refId": "A"
+          }
+        ],
+        "title": "Average number of messages not visible",
+        "type": "stat"
+      },
+      {
+        "datasource": null,
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "palette-classic"
+            },
+            "custom": {
+              "axisLabel": "",
+              "axisPlacement": "auto",
+              "barAlignment": 0,
+              "drawStyle": "line",
+              "fillOpacity": 0,
+              "gradientMode": "none",
+              "hideFrom": {
+                "legend": false,
+                "tooltip": false,
+                "viz": false
+              },
+              "lineInterpolation": "linear",
+              "lineWidth": 1,
+              "pointSize": 5,
+              "scaleDistribution": {
+                "type": "linear"
+              },
+              "showPoints": "auto",
+              "spanNulls": false,
+              "stacking": {
+                "group": "A",
+                "mode": "none"
+              },
+              "thresholdsStyle": {
+                "mode": "off"
+              }
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 8,
+          "x": 4,
+          "y": 18
+        },
+        "id": 8,
+        "options": {
+          "legend": {
+            "calcs": [],
+            "displayMode": "list",
+            "placement": "bottom"
+          },
+          "tooltip": {
+            "mode": "single"
+          }
+        },
+        "targets": [
+          {
+            "exemplar": true,
+            "expr": "avg(cloudwatch_aws_sqs_approximate_number_of_messages_not_visible_average{queue_name=~\"$queue_name\"}) by (queue_name)",
+            "interval": "",
+            "legendFormat": "{{queue_name}}",
+            "refId": "A"
+          }
+        ],
+        "title": "Average number of messages not visible",
+        "type": "timeseries"
+      },
+      {
+        "datasource": null,
+        "description": "",
+        "fieldConfig": {
+          "defaults": {
+            "color": {
+              "mode": "thresholds"
+            },
+            "mappings": [],
+            "thresholds": {
+              "mode": "absolute",
+              "steps": [
+                {
+                  "color": "green",
+                  "value": null
+                },
+                {
+                  "color": "#EAB839",
+                  "value": 100
+                },
+                {
+                  "color": "red",
+                  "value": 150
+                }
+              ]
+            }
+          },
+          "overrides": []
+        },
+        "gridPos": {
+          "h": 9,
+          "w": 4,
+          "x": 12,
+          "y": 18
+        },
+        "id": 10,
         "options": {
           "colorMode": "value",
           "graphMode": "none",
@@ -77,80 +772,13 @@
         "targets": [
           {
             "exemplar": true,
-            "expr": "count(amazonaws_com_AWS_ElastiCache_IsMaster_sum{CacheClusterId!=\"\",CacheNodeId=\"\"})",
+            "expr": "sum(cloudwatch_aws_sqs_number_of_empty_receives_sum{queue_name=~\"$queue_name\"})",
             "interval": "",
             "legendFormat": "",
             "refId": "A"
           }
         ],
-        "title": "Cluster Count",
-        "type": "stat"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "#EAB839",
-                  "value": 30
-                },
-                {
-                  "color": "orange",
-                  "value": 40
-                },
-                {
-                  "color": "red",
-                  "value": 50
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 6,
-          "w": 6,
-          "x": 6,
-          "y": 0
-        },
-        "id": 3,
-        "options": {
-          "colorMode": "background",
-          "graphMode": "none",
-          "justifyMode": "auto",
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "text": {},
-          "textMode": "auto"
-        },
-        "pluginVersion": "8.2.6",
-        "targets": [
-          {
-            "exemplar": true,
-            "expr": "(sum(amazonaws_com_AWS_ElastiCache_CacheMisses_sum{})/(sum(amazonaws_com_AWS_ElastiCache_CacheHits_sum{})+sum(amazonaws_com_AWS_ElastiCache_CacheMisses_sum{})))*100",
-            "interval": "",
-            "legendFormat": "",
-            "refId": "A"
-          }
-        ],
-        "title": "Cache Miss %",
+        "title": "Average number of empty messages",
         "type": "stat"
       },
       {
@@ -162,7 +790,7 @@
               "mode": "palette-classic"
             },
             "custom": {
-              "axisLabel": "Connections",
+              "axisLabel": "",
               "axisPlacement": "auto",
               "barAlignment": 0,
               "drawStyle": "line",
@@ -173,15 +801,14 @@
                 "tooltip": false,
                 "viz": false
               },
-              "lineInterpolation": "smooth",
+              "lineInterpolation": "linear",
               "lineWidth": 1,
               "pointSize": 5,
               "scaleDistribution": {
-                "log": 10,
-                "type": "log"
+                "type": "linear"
               },
               "showPoints": "auto",
-              "spanNulls": true,
+              "spanNulls": false,
               "stacking": {
                 "group": "A",
                 "mode": "none"
@@ -197,6 +824,10 @@
                 {
                   "color": "green",
                   "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
                 }
               ]
             }
@@ -204,42 +835,37 @@
           "overrides": []
         },
         "gridPos": {
-          "h": 6,
-          "w": 12,
-          "x": 12,
-          "y": 0
+          "h": 9,
+          "w": 8,
+          "x": 16,
+          "y": 18
         },
-        "id": 7,
+        "id": 16,
         "options": {
           "legend": {
-            "calcs": [
-              "lastNotNull",
-              "min",
-              "max",
-              "mean"
-            ],
-            "displayMode": "table",
+            "calcs": [],
+            "displayMode": "list",
             "placement": "bottom"
           },
           "tooltip": {
             "mode": "single"
           }
         },
-        "pluginVersion": "8.2.6",
         "targets": [
           {
             "exemplar": true,
-            "expr": "sum(amazonaws_com_AWS_ElastiCache_CurrConnections_sum{CacheClusterId!=\"\",CacheNodeId=\"\",CacheClusterId=~\"$CacheClusterId\"}) by (CacheClusterId)",
+            "expr": "avg(cloudwatch_aws_sqs_number_of_empty_receives_average{queue_name=~\"$queue_name\"}) by (queue_name)",
             "interval": "",
-            "legendFormat": "{{CacheClusterId}}",
+            "legendFormat": "{{queue_name}}",
             "refId": "A"
           }
         ],
-        "title": "Current Connection",
+        "title": "Average number of empty messages",
         "type": "timeseries"
       },
       {
         "datasource": null,
+        "description": "",
         "fieldConfig": {
           "defaults": {
             "color": {
@@ -251,20 +877,20 @@
               "barAlignment": 0,
               "drawStyle": "line",
               "fillOpacity": 0,
-              "gradientMode": "hue",
+              "gradientMode": "none",
               "hideFrom": {
                 "legend": false,
                 "tooltip": false,
                 "viz": false
               },
-              "lineInterpolation": "smooth",
+              "lineInterpolation": "linear",
               "lineWidth": 1,
               "pointSize": 5,
               "scaleDistribution": {
                 "type": "linear"
               },
               "showPoints": "auto",
-              "spanNulls": true,
+              "spanNulls": false,
               "stacking": {
                 "group": "A",
                 "mode": "none"
@@ -280,142 +906,43 @@
                 {
                   "color": "green",
                   "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
                 }
               ]
-            },
-            "unit": "decbytes"
+            }
           },
           "overrides": []
         },
         "gridPos": {
           "h": 9,
-          "w": 12,
+          "w": 8,
           "x": 0,
-          "y": 6
-        },
-        "id": 4,
-        "options": {
-          "legend": {
-            "calcs": [
-              "lastNotNull",
-              "min",
-              "max",
-              "mean"
-            ],
-            "displayMode": "table",
-            "placement": "bottom"
-          },
-          "tooltip": {
-            "mode": "single"
-          }
-        },
-        "pluginVersion": "8.2.6",
-        "targets": [
-          {
-            "exemplar": true,
-            "expr": "sum(amazonaws_com_AWS_ElastiCache_NetworkBytesOut_sum{CacheClusterId!=\"\",CacheClusterId=~\"$CacheClusterId\",CacheNodeId=\"\"}) by (CacheClusterId)",
-            "interval": "",
-            "legendFormat": "{{CacheClusterId}}",
-            "refId": "A"
-          }
-        ],
-        "title": "Network Bytes Out",
-        "type": "timeseries"
-      },
-      {
-        "datasource": null,
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineInterpolation": "smooth",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": true,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 40
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 12,
-          "x": 12,
-          "y": 6
+          "y": 27
         },
         "id": 5,
         "options": {
           "legend": {
-            "calcs": [
-              "lastNotNull",
-              "min",
-              "max",
-              "mean"
-            ],
-            "displayMode": "table",
+            "calcs": [],
+            "displayMode": "list",
             "placement": "bottom"
           },
           "tooltip": {
             "mode": "single"
           }
         },
-        "pluginVersion": "8.2.6",
         "targets": [
           {
             "exemplar": true,
-            "expr": "sum(amazonaws_com_AWS_ElastiCache_CacheHits_sum{})",
+            "expr": "avg(cloudwatch_aws_sqs_approximate_number_of_messages_delayed_average{queue_name=~\"$queue_name\"}) by (queue_name)",
             "interval": "",
-            "legendFormat": "Cache Hits",
+            "legendFormat": "{{queue_name}}",
             "refId": "A"
-          },
-          {
-            "exemplar": true,
-            "expr": "sum(amazonaws_com_AWS_ElastiCache_CacheMisses_sum{})",
-            "hide": false,
-            "interval": "",
-            "legendFormat": "Cache Misses",
-            "refId": "B"
           }
         ],
-        "title": "Cache Hits vs Misses",
+        "title": "Average number of messages delayed",
         "type": "timeseries"
       },
       {
@@ -427,7 +954,7 @@
               "mode": "palette-classic"
             },
             "custom": {
-              "axisLabel": "Commands",
+              "axisLabel": "",
               "axisPlacement": "auto",
               "barAlignment": 0,
               "drawStyle": "line",
@@ -438,14 +965,14 @@
                 "tooltip": false,
                 "viz": false
               },
-              "lineInterpolation": "smooth",
+              "lineInterpolation": "linear",
               "lineWidth": 1,
               "pointSize": 5,
               "scaleDistribution": {
                 "type": "linear"
               },
               "showPoints": "auto",
-              "spanNulls": true,
+              "spanNulls": false,
               "stacking": {
                 "group": "A",
                 "mode": "none"
@@ -464,7 +991,7 @@
                 },
                 {
                   "color": "red",
-                  "value": 40
+                  "value": 80
                 }
               ]
             }
@@ -473,45 +1000,31 @@
         },
         "gridPos": {
           "h": 9,
-          "w": 12,
-          "x": 0,
-          "y": 15
+          "w": 8,
+          "x": 8,
+          "y": 27
         },
         "id": 6,
         "options": {
           "legend": {
-            "calcs": [
-              "lastNotNull",
-              "min",
-              "max",
-              "mean"
-            ],
-            "displayMode": "table",
+            "calcs": [],
+            "displayMode": "list",
             "placement": "bottom"
           },
           "tooltip": {
             "mode": "single"
           }
         },
-        "pluginVersion": "8.2.6",
         "targets": [
           {
             "exemplar": true,
-            "expr": "sum(amazonaws_com_AWS_ElastiCache_GetTypeCmds_sum{CacheClusterId!=\"\",CacheNodeId=\"\"})",
+            "expr": "avg(cloudwatch_aws_sqs_approximate_age_of_oldest_message_average{queue_name=~\"$queue_name\"}) by (queue_name)",
             "interval": "",
-            "legendFormat": "Read",
+            "legendFormat": "{{queue_name}}",
             "refId": "A"
-          },
-          {
-            "exemplar": true,
-            "expr": "sum(amazonaws_com_AWS_ElastiCache_SetTypeCmds_sum{CacheClusterId!=\"\",CacheNodeId=\"\"})",
-            "hide": false,
-            "interval": "",
-            "legendFormat": "Write",
-            "refId": "B"
           }
         ],
-        "title": "Cache Read vs Write",
+        "title": "Average age of oldest message",
         "type": "timeseries"
       },
       {
@@ -534,14 +1047,14 @@
                 "tooltip": false,
                 "viz": false
               },
-              "lineInterpolation": "smooth",
+              "lineInterpolation": "linear",
               "lineWidth": 1,
               "pointSize": 5,
               "scaleDistribution": {
                 "type": "linear"
               },
               "showPoints": "auto",
-              "spanNulls": true,
+              "spanNulls": false,
               "stacking": {
                 "group": "A",
                 "mode": "none"
@@ -557,6 +1070,10 @@
                 {
                   "color": "green",
                   "value": null
+                },
+                {
+                  "color": "red",
+                  "value": 80
                 }
               ]
             }
@@ -565,585 +1082,31 @@
         },
         "gridPos": {
           "h": 9,
-          "w": 12,
-          "x": 12,
-          "y": 15
+          "w": 8,
+          "x": 16,
+          "y": 27
         },
-        "id": 11,
+        "id": 7,
         "options": {
           "legend": {
-            "calcs": [
-              "lastNotNull",
-              "min",
-              "max",
-              "mean"
-            ],
-            "displayMode": "table",
+            "calcs": [],
+            "displayMode": "list",
             "placement": "bottom"
           },
           "tooltip": {
             "mode": "single"
           }
         },
-        "pluginVersion": "8.2.6",
         "targets": [
           {
             "exemplar": true,
-            "expr": "avg(amazonaws_com_AWS_ElastiCache_CurrItems_sum{CacheClusterId!=\"\",CacheNodeId=\"\",CacheClusterId=~\"$CacheClusterId\"}) by (CacheClusterId)",
+            "expr": "avg(cloudwatch_aws_sqs_sent_message_size_average{queue_name=~\"$queue_name\"}) by (queue_name)",
             "interval": "",
-            "legendFormat": "{{CacheClusterId}}",
+            "legendFormat": "{{queue_name}}",
             "refId": "A"
           }
         ],
-        "title": "Items",
-        "type": "timeseries"
-      },
-      {
-        "datasource": null,
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineInterpolation": "smooth",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": true,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 40
-                }
-              ]
-            },
-            "unit": "decbytes"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 12,
-          "x": 0,
-          "y": 24
-        },
-        "id": 8,
-        "options": {
-          "legend": {
-            "calcs": [
-              "lastNotNull",
-              "min",
-              "max",
-              "mean"
-            ],
-            "displayMode": "table",
-            "placement": "bottom"
-          },
-          "tooltip": {
-            "mode": "single"
-          }
-        },
-        "pluginVersion": "8.2.6",
-        "targets": [
-          {
-            "exemplar": true,
-            "expr": "sum(amazonaws_com_AWS_ElastiCache_BytesUsedForCache_sum{CacheClusterId!=\"\",CacheNodeId=\"\",CacheClusterId=~\"$CacheClusterId\"}) by (CacheClusterId)",
-            "interval": "",
-            "legendFormat": "{{CacheClusterId}}",
-            "refId": "A"
-          }
-        ],
-        "title": "Total bytes allocated by Redis",
-        "type": "timeseries"
-      },
-      {
-        "datasource": null,
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisLabel": "Seconds",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineInterpolation": "smooth",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": true,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 40
-                }
-              ]
-            },
-            "unit": "s"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 12,
-          "x": 12,
-          "y": 24
-        },
-        "id": 10,
-        "options": {
-          "legend": {
-            "calcs": [
-              "lastNotNull",
-              "min",
-              "max",
-              "mean"
-            ],
-            "displayMode": "table",
-            "placement": "bottom"
-          },
-          "tooltip": {
-            "mode": "single"
-          }
-        },
-        "pluginVersion": "8.2.6",
-        "targets": [
-          {
-            "exemplar": true,
-            "expr": "avg(amazonaws_com_AWS_ElastiCache_ReplicationLag{CacheClusterId!=\"\",CacheNodeId=\"\",CacheClusterId=~\"$CacheClusterId\"}) by (CacheClusterId)",
-            "interval": "",
-            "legendFormat": "{{CacheClusterId}}",
-            "refId": "A"
-          }
-        ],
-        "title": "Replication Lag",
-        "type": "timeseries"
-      },
-      {
-        "datasource": null,
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineInterpolation": "smooth",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": true,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 40
-                }
-              ]
-            },
-            "unit": "percent"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 12,
-          "x": 0,
-          "y": 33
-        },
-        "id": 12,
-        "options": {
-          "legend": {
-            "calcs": [
-              "lastNotNull",
-              "min",
-              "max",
-              "mean"
-            ],
-            "displayMode": "table",
-            "placement": "bottom"
-          },
-          "tooltip": {
-            "mode": "single"
-          }
-        },
-        "pluginVersion": "8.2.6",
-        "targets": [
-          {
-            "exemplar": true,
-            "expr": "avg(amazonaws_com_AWS_ElastiCache_DatabaseMemoryUsagePercentage{CacheNodeId!=\"\",CacheNodeId=~\"$CacheNodeId\"}) by (CacheNodeId)",
-            "interval": "",
-            "legendFormat": "Node: {{CacheNodeId}}",
-            "refId": "A"
-          }
-        ],
-        "title": "Memory Usage (Node)",
-        "type": "timeseries"
-      },
-      {
-        "datasource": null,
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineInterpolation": "smooth",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": true,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 40
-                }
-              ]
-            },
-            "unit": "percent"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 12,
-          "x": 12,
-          "y": 33
-        },
-        "id": 13,
-        "options": {
-          "legend": {
-            "calcs": [
-              "lastNotNull",
-              "min",
-              "max",
-              "mean"
-            ],
-            "displayMode": "table",
-            "placement": "bottom"
-          },
-          "tooltip": {
-            "mode": "single"
-          }
-        },
-        "pluginVersion": "8.2.6",
-        "targets": [
-          {
-            "exemplar": true,
-            "expr": "avg(amazonaws_com_AWS_ElastiCache_DatabaseMemoryUsagePercentage{CacheClusterId!=\"\",CacheClusterId=~\"$CacheClusterId\"}) by (CacheClusterId)",
-            "interval": "",
-            "legendFormat": "Cluster: {{CacheClusterId}}",
-            "refId": "A"
-          }
-        ],
-        "title": "Memory Usage (Cluster)",
-        "type": "timeseries"
-      },
-      {
-        "datasource": null,
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisLabel": "Percent",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineInterpolation": "smooth",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": true,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 40
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 12,
-          "x": 0,
-          "y": 42
-        },
-        "id": 9,
-        "options": {
-          "legend": {
-            "calcs": [
-              "lastNotNull",
-              "min",
-              "max",
-              "mean"
-            ],
-            "displayMode": "table",
-            "placement": "bottom"
-          },
-          "tooltip": {
-            "mode": "single"
-          }
-        },
-        "pluginVersion": "8.2.6",
-        "targets": [
-          {
-            "exemplar": true,
-            "expr": "avg(amazonaws_com_AWS_ElastiCache_EngineCPUUtilization{CacheNodeId!=\"\",CacheNodeId=~\"$CacheNodeId\"}) by (CacheNodeId)",
-            "interval": "",
-            "legendFormat": "Server: {{CacheNodeId}}",
-            "refId": "A"
-          },
-          {
-            "exemplar": true,
-            "expr": "avg(amazonaws_com_AWS_ElastiCache_CPUUtilization{CacheNodeId!=\"\",CacheNodeId=~\"$CacheNodeId\"}) by (CacheNodeId)",
-            "hide": false,
-            "interval": "",
-            "legendFormat": "Redis: {{CacheNodeId}}",
-            "refId": "B"
-          }
-        ],
-        "title": "CPU Utilization by Node",
-        "type": "timeseries"
-      },
-      {
-        "datasource": null,
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisLabel": "Percent",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 0,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineInterpolation": "smooth",
-              "lineWidth": 1,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": true,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 40
-                }
-              ]
-            }
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 9,
-          "w": 12,
-          "x": 12,
-          "y": 42
-        },
-        "id": 14,
-        "options": {
-          "legend": {
-            "calcs": [
-              "lastNotNull",
-              "min",
-              "max",
-              "mean"
-            ],
-            "displayMode": "table",
-            "placement": "bottom"
-          },
-          "tooltip": {
-            "mode": "single"
-          }
-        },
-        "pluginVersion": "8.2.6",
-        "targets": [
-          {
-            "exemplar": true,
-            "expr": "avg(amazonaws_com_AWS_ElastiCache_EngineCPUUtilization{CacheClusterId!=\"\",CacheNodeId=\"\",CacheClusterId=~\"$CacheClusterId\"}) by (CacheClusterId)",
-            "interval": "",
-            "legendFormat": "Server: {{CacheClusterId}}",
-            "refId": "A"
-          },
-          {
-            "exemplar": true,
-            "expr": "avg(amazonaws_com_AWS_ElastiCache_CPUUtilization{CacheClusterId!=\"\",CacheNodeId=\"\",CacheClusterId=~\"$CacheClusterId\"}) by (CacheClusterId)",
-            "hide": false,
-            "interval": "",
-            "legendFormat": "Redis: {{CacheClusterId}}",
-            "refId": "B"
-          }
-        ],
-        "title": "CPU Utilization by Cluster",
+        "title": "Average message size",
         "type": "timeseries"
       }
     ],
@@ -1153,61 +1116,24 @@
     "templating": {
       "list": [
         {
-          "allValue": ".*",
+          "allValue": null,
           "current": {
-            "selected": true,
-            "text": [
-              "dee1bkfincziv3f0-001",
-              "dee1wgllbq5gxltr-001"
-            ],
-            "value": [
-              "dee1bkfincziv3f0-001",
-              "dee1wgllbq5gxltr-001"
-            ]
+            "selected": false,
+            "text": "All",
+            "value": "$__all"
           },
           "datasource": null,
-          "definition": "label_values(CacheClusterId)",
+          "definition": "label_values(queue_name)",
           "description": null,
           "error": null,
           "hide": 0,
           "includeAll": true,
-          "label": "Cache Cluster Id",
+          "label": null,
           "multi": true,
-          "name": "CacheClusterId",
+          "name": "queue_name",
           "options": [],
           "query": {
-            "query": "label_values(CacheClusterId)",
-            "refId": "StandardVariableQuery"
-          },
-          "refresh": 1,
-          "regex": "",
-          "skipUrlSync": false,
-          "sort": 0,
-          "type": "query"
-        },
-        {
-          "allValue": ".*",
-          "current": {
-            "selected": true,
-            "text": [
-              "0001"
-            ],
-            "value": [
-              "0001"
-            ]
-          },
-          "datasource": null,
-          "definition": "label_values(CacheNodeId)",
-          "description": null,
-          "error": null,
-          "hide": 0,
-          "includeAll": true,
-          "label": "Cache Node Id",
-          "multi": true,
-          "name": "CacheNodeId",
-          "options": [],
-          "query": {
-            "query": "label_values(CacheNodeId)",
+            "query": "label_values(queue_name)",
             "refId": "StandardVariableQuery"
           },
           "refresh": 1,
@@ -1219,12 +1145,12 @@
       ]
     },
     "time": {
-      "from": "now-90d",
+      "from": "now-24h",
       "to": "now"
     },
     "timepicker": {},
     "timezone": "",
-    "title": "ElastiCache Dashboard (Metric Stream)",
-    "uid": "Ec9aCwH9e",
+    "title": "CloudWatch - SQS",
+    "uid": "aoR8HIaVk",
     "version": 4
   }

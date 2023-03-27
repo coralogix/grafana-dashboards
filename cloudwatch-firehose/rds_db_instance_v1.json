@@ -23,8 +23,8 @@
     "fiscalYearStartMonth": 0,
     "gnetId": null,
     "graphTooltip": 0,
-    "id": 934,
-    "iteration": 1671000308037,
+    "id": 937,
+    "iteration": 1671023250562,
     "links": [],
     "liveNow": false,
     "panels": [
@@ -106,9 +106,9 @@
         "targets": [
           {
             "exemplar": true,
-            "expr": "avg(cloudwatch_aws_rds_cpu_utilization_average{db_instance_identifier=~\"$dbInstanceIdentifier\",db_instance_identifier!=\"\"}) by (db_instance_identifier)",
+            "expr": "avg(amazonaws_com_AWS_RDS_CPUUtilization{DBInstanceIdentifier=~\"$DBInstanceIdentifier\",DBInstanceIdentifier!=\"\"}) by (DBInstanceIdentifier)",
             "interval": "",
-            "legendFormat": "{{db_instance_identifier}}",
+            "legendFormat": "{{DBInstanceIdentifier}}",
             "refId": "A"
           }
         ],
@@ -193,9 +193,9 @@
         "targets": [
           {
             "exemplar": true,
-            "expr": "avg(cloudwatch_aws_rds_deadlocks_sum{db_instance_identifier=~\"$dbInstanceIdentifier\",db_instance_identifier!=\"\"}) by (db_instance_identifier)",
+            "expr": "avg(amazonaws_com_AWS_RDS_Deadlocks_sum{DBInstanceIdentifier=~\"$DBInstanceIdentifier\",DBInstanceIdentifier!=\"\"}) by (DBInstanceIdentifier)",
             "interval": "",
-            "legendFormat": "{{db_instance_identifier}}",
+            "legendFormat": "{{DBInstanceIdentifier}}",
             "refId": "A"
           }
         ],
@@ -282,9 +282,9 @@
         "targets": [
           {
             "exemplar": true,
-            "expr": "avg(cloudwatch_aws_rds_database_connections_average{db_instance_identifier=~\"$dbInstanceIdentifier\",db_instance_identifier!=\"\"}) by (db_instance_identifier)",
+            "expr": "avg(amazonaws_com_AWS_RDS_DatabaseConnections{DBInstanceIdentifier=~\"$DBInstanceIdentifier\",DBInstanceIdentifier!=\"\"}) by (DBInstanceIdentifier)",
             "interval": "",
-            "legendFormat": "{{db_instance_identifier}}",
+            "legendFormat": "{{DBInstanceIdentifier}}",
             "refId": "A"
           }
         ],
@@ -369,9 +369,9 @@
         "targets": [
           {
             "exemplar": true,
-            "expr": "avg(cloudwatch_aws_rds_row_lock_time_average{db_instance_identifier=~\"$dbInstanceIdentifier\",db_instance_identifier!=\"\"}) by (db_instance_identifier)",
+            "expr": "avg(amazonaws_com_AWS_RDS_RowLockTime{DBInstanceIdentifier=~\"$DBInstanceIdentifier\",DBInstanceIdentifier!=\"\"}) by (DBInstanceIdentifier)",
             "interval": "",
-            "legendFormat": "{{db_instance_identifier}}",
+            "legendFormat": "{{DBInstanceIdentifier}}",
             "refId": "A"
           }
         ],
@@ -456,9 +456,9 @@
         "targets": [
           {
             "exemplar": true,
-            "expr": "avg(cloudwatch_aws_rds_cpu_utilization_average{db_cluster_identifier!=\"\",role!=\"\"}) by (role,db_cluster_identifier)",
+            "expr": "avg(amazonaws_com_AWS_RDS_CPUUtilization{DBClusterIdentifier!=\"\",Role!=\"\"}) by (Role,DBClusterIdentifier) ",
             "interval": "",
-            "legendFormat": "{{role}}>>{{db_cluster_identifier}}",
+            "legendFormat": "{{Role}}>>{{DBClusterIdentifier}}",
             "refId": "A"
           }
         ],
@@ -475,7 +475,7 @@
         {
           "allValue": ".*",
           "current": {
-            "selected": false,
+            "selected": true,
             "text": [
               "All"
             ],
@@ -484,17 +484,17 @@
             ]
           },
           "datasource": null,
-          "definition": "label_values(db_instance_identifier)",
+          "definition": "label_values(DBInstanceIdentifier)",
           "description": null,
           "error": null,
           "hide": 0,
           "includeAll": true,
           "label": "DB Instance Identifier",
           "multi": true,
-          "name": "dbInstanceIdentifier",
+          "name": "DBInstanceIdentifier",
           "options": [],
           "query": {
-            "query": "label_values(db_instance_identifier)",
+            "query": "label_values(DBInstanceIdentifier)",
             "refId": "StandardVariableQuery"
           },
           "refresh": 1,
@@ -506,12 +506,12 @@
       ]
     },
     "time": {
-      "from": "now-1h",
+      "from": "now-90d",
       "to": "now"
     },
     "timepicker": {},
     "timezone": "",
-    "title": "CloudWatch - RDS by DB Instance",
-    "uid": "ZHm9CwN9z",
-    "version": 7
+    "title": "CloudWatch - RDS DB Instance",
+    "uid": "AhM9WsM9a",
+    "version": 3
   }

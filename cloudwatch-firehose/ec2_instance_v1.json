@@ -910,7 +910,7 @@
   },
   "timepicker": {},
   "timezone": "",
-  "title": "CloudWatch - EC2 by InstanceId",
+  "title": "CloudWatch - EC2 Instance",
   "uid": "HFrQ8J7Sr",
   "version": 3
 }

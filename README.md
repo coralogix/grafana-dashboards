@@ -6,3 +6,4 @@ A place for the grafana dashboards split into a data source and collector type (
 - cloudwatch-telegraf
 - k8s-prometheus
 - k8s-opentelemetry
+- windows-prometheus

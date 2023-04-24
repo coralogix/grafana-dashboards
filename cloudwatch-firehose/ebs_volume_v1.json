@@ -1,1137 +1,1101 @@
 {
-    "annotations": {
-      "list": [
-        {
-          "builtIn": 1,
-          "datasource": "-- Grafana --",
-          "enable": true,
-          "hide": true,
-          "iconColor": "rgba(0, 211, 255, 1)",
-          "name": "Annotations & Alerts",
-          "target": {
-            "limit": 100,
-            "matchAny": false,
-            "tags": [],
-            "type": "dashboard"
-          },
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
           "type": "dashboard"
-        }
-      ]
-    },
-    "description": "Visualize AWS EBS metrics",
-    "editable": true,
-    "fiscalYearStartMonth": 0,
-    "gnetId": 623,
-    "graphTooltip": 0,
-    "id": 1678,
-    "iteration": 1671201054554,
-    "links": [],
-    "liveNow": false,
-    "panels": [
-      {
-        "datasource": null,
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 10,
-              "gradientMode": "hue",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineInterpolation": "smooth",
-              "lineWidth": 2,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": true,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "s"
-          },
-          "overrides": []
         },
-        "gridPos": {
-          "h": 7,
-          "w": 24,
-          "x": 0,
-          "y": 0
-        },
-        "id": 17,
-        "links": [],
-        "options": {
-          "legend": {
-            "calcs": [
-              "mean",
-              "lastNotNull",
-              "max",
-              "min"
-            ],
-            "displayMode": "table",
-            "placement": "bottom"
-          },
-          "tooltip": {
-            "mode": "single"
-          }
-        },
-        "pluginVersion": "8.2.6",
-        "targets": [
-          {
-            "alias": "",
-            "application": {
-              "filter": ""
-            },
-            "dimensions": {
-              "VolumeId": "$volumeid"
-            },
-            "exemplar": true,
-            "expr": "avg(amazonaws_com_AWS_EBS_VolumeIdleTime_sum{__aws_region=\"$region\",VolumeId=~\"$volumeid\",VolumeId!=\"\"}) by (VolumeId)",
-            "functions": [],
-            "group": {
-              "filter": ""
-            },
-            "host": {
-              "filter": ""
-            },
-            "interval": "",
-            "item": {
-              "filter": ""
-            },
-            "legendFormat": "{{VolumeId}}",
-            "metricName": "VolumeTotalReadTime",
-            "mode": 0,
-            "namespace": "AWS/EBS",
-            "options": {
-              "showDisabledItems": false
-            },
-            "period": "",
-            "refId": "A",
-            "region": "$region",
-            "statistic": "Average"
-          },
-          {
-            "alias": "",
-            "application": {
-              "filter": ""
-            },
-            "dimensions": {
-              "VolumeId": "$volumeid"
-            },
-            "functions": [],
-            "group": {
-              "filter": ""
-            },
-            "host": {
-              "filter": ""
-            },
-            "item": {
-              "filter": ""
-            },
-            "metricName": "VolumeTotalWriteTime",
-            "mode": 0,
-            "namespace": "AWS/EBS",
-            "options": {
-              "showDisabledItems": false
-            },
-            "period": "",
-            "refId": "B",
-            "region": "$region",
-            "statistic": "Average"
-          },
-          {
-            "alias": "",
-            "application": {
-              "filter": ""
-            },
-            "dimensions": {
-              "VolumeId": "$volumeid"
-            },
-            "functions": [],
-            "group": {
-              "filter": ""
-            },
-            "host": {
-              "filter": ""
-            },
-            "item": {
-              "filter": ""
-            },
-            "metricName": "VolumeIdleTime",
-            "mode": 0,
-            "namespace": "AWS/EBS",
-            "options": {
-              "showDisabledItems": false
-            },
-            "period": "",
-            "refId": "C",
-            "region": "$region",
-            "statistic": "Average"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Idle Time",
-        "type": "timeseries"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 10,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineInterpolation": "smooth",
-              "lineWidth": 2,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": true,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "VolumeIdleTime_Average"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "s"
-                },
-                {
-                  "id": "custom.axisPlacement",
-                  "value": "hidden"
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 7,
-          "w": 24,
-          "x": 0,
-          "y": 7
-        },
-        "id": 16,
-        "links": [],
-        "options": {
-          "legend": {
-            "calcs": [
-              "mean",
-              "lastNotNull",
-              "max",
-              "min"
-            ],
-            "displayMode": "table",
-            "placement": "bottom"
-          },
-          "tooltip": {
-            "mode": "single"
-          }
-        },
-        "pluginVersion": "8.2.6",
-        "targets": [
-          {
-            "alias": "",
-            "application": {
-              "filter": ""
-            },
-            "dimensions": {
-              "VolumeId": "$volumeid"
-            },
-            "exemplar": true,
-            "expr": "amazonaws_com_AWS_EBS_VolumeQueueLength_sum{__aws_region=\"$region\",VolumeId=~\"$volumeid\",VolumeId!=\"\"}",
-            "expression": "",
-            "functions": [],
-            "group": {
-              "filter": ""
-            },
-            "host": {
-              "filter": ""
-            },
-            "id": "",
-            "interval": "",
-            "item": {
-              "filter": ""
-            },
-            "legendFormat": "{{VolumeId}}",
-            "matchExact": true,
-            "metricName": "VolumeQueueLength",
-            "mode": 0,
-            "namespace": "AWS/EBS",
-            "options": {
-              "showDisabledItems": false
-            },
-            "period": "",
-            "refId": "A",
-            "region": "$region",
-            "statistic": "Average"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Volume Queue Length",
-        "type": "timeseries"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 10,
-              "gradientMode": "hue",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineInterpolation": "smooth",
-              "lineWidth": 2,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": true,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "s"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 7,
-          "w": 24,
-          "x": 0,
-          "y": 14
-        },
-        "id": 22,
-        "links": [],
-        "options": {
-          "legend": {
-            "calcs": [
-              "mean",
-              "lastNotNull",
-              "max",
-              "min"
-            ],
-            "displayMode": "table",
-            "placement": "bottom"
-          },
-          "tooltip": {
-            "mode": "single"
-          }
-        },
-        "pluginVersion": "8.2.6",
-        "targets": [
-          {
-            "alias": "",
-            "application": {
-              "filter": ""
-            },
-            "dimensions": {
-              "VolumeId": "$volumeid"
-            },
-            "exemplar": true,
-            "expr": "avg(amazonaws_com_AWS_EBS_VolumeIdleTime_sum{__aws_region=\"$region\",VolumeId=~\"$volumeid\",VolumeId!=\"\"}) by (VolumeId)",
-            "functions": [],
-            "group": {
-              "filter": ""
-            },
-            "host": {
-              "filter": ""
-            },
-            "interval": "",
-            "item": {
-              "filter": ""
-            },
-            "legendFormat": "{{VolumeId}}",
-            "metricName": "VolumeTotalReadTime",
-            "mode": 0,
-            "namespace": "AWS/EBS",
-            "options": {
-              "showDisabledItems": false
-            },
-            "period": "",
-            "refId": "A",
-            "region": "$region",
-            "statistic": "Average"
-          },
-          {
-            "alias": "",
-            "application": {
-              "filter": ""
-            },
-            "dimensions": {
-              "VolumeId": "$volumeid"
-            },
-            "functions": [],
-            "group": {
-              "filter": ""
-            },
-            "host": {
-              "filter": ""
-            },
-            "item": {
-              "filter": ""
-            },
-            "metricName": "VolumeTotalWriteTime",
-            "mode": 0,
-            "namespace": "AWS/EBS",
-            "options": {
-              "showDisabledItems": false
-            },
-            "period": "",
-            "refId": "B",
-            "region": "$region",
-            "statistic": "Average"
-          },
-          {
-            "alias": "",
-            "application": {
-              "filter": ""
-            },
-            "dimensions": {
-              "VolumeId": "$volumeid"
-            },
-            "functions": [],
-            "group": {
-              "filter": ""
-            },
-            "host": {
-              "filter": ""
-            },
-            "item": {
-              "filter": ""
-            },
-            "metricName": "VolumeIdleTime",
-            "mode": 0,
-            "namespace": "AWS/EBS",
-            "options": {
-              "showDisabledItems": false
-            },
-            "period": "",
-            "refId": "C",
-            "region": "$region",
-            "statistic": "Average"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Volume Time",
-        "type": "timeseries"
-      },
-      {
-        "datasource": null,
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 10,
-              "gradientMode": "hue",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineInterpolation": "smooth",
-              "lineWidth": 2,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": true,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "decbytes"
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "VolumeIdleTime_Average"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "none"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "VolumeConsumedReadWriteOps_Average"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "none"
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 7,
-          "w": 24,
-          "x": 0,
-          "y": 21
-        },
-        "id": 18,
-        "links": [],
-        "options": {
-          "legend": {
-            "calcs": [
-              "mean",
-              "lastNotNull",
-              "max",
-              "min"
-            ],
-            "displayMode": "table",
-            "placement": "bottom"
-          },
-          "tooltip": {
-            "mode": "single"
-          }
-        },
-        "pluginVersion": "8.2.6",
-        "targets": [
-          {
-            "alias": "",
-            "application": {
-              "filter": ""
-            },
-            "dimensions": {
-              "VolumeId": "$volumeid"
-            },
-            "exemplar": true,
-            "expr": "avg(amazonaws_com_AWS_EBS_VolumeReadBytes_sum{__aws_region=\"$region\",VolumeId=~\"$volumeid\",VolumeId!=\"\"}) by (VolumeId)",
-            "functions": [],
-            "group": {
-              "filter": ""
-            },
-            "host": {
-              "filter": ""
-            },
-            "interval": "",
-            "item": {
-              "filter": ""
-            },
-            "legendFormat": "Read: {{VolumeId}}",
-            "metricName": "VolumeThroughputPercentage",
-            "mode": 0,
-            "namespace": "AWS/EBS",
-            "options": {
-              "showDisabledItems": false
-            },
-            "period": "",
-            "refId": "A",
-            "region": "$region",
-            "statistic": "Average"
-          },
-          {
-            "alias": "",
-            "application": {
-              "filter": ""
-            },
-            "dimensions": {
-              "VolumeId": "$volumeid"
-            },
-            "exemplar": true,
-            "expr": "avg(amazonaws_com_AWS_EBS_VolumeWriteBytes_sum{__aws_region=\"$region\",VolumeId=~\"$volumeid\",VolumeId!=\"\"}) by (VolumeId)",
-            "functions": [],
-            "group": {
-              "filter": ""
-            },
-            "host": {
-              "filter": ""
-            },
-            "interval": "",
-            "item": {
-              "filter": ""
-            },
-            "legendFormat": "Write: {{VolumeId}}",
-            "metricName": "VolumeConsumedReadWriteOps",
-            "mode": 0,
-            "namespace": "AWS/EBS",
-            "options": {
-              "showDisabledItems": false
-            },
-            "period": "",
-            "refId": "B",
-            "region": "$region",
-            "statistic": "Average"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Volume Read/Write Bytes",
-        "type": "timeseries"
-      },
-      {
-        "datasource": null,
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 10,
-              "gradientMode": "hue",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineInterpolation": "smooth",
-              "lineWidth": 2,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": true,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "VolumeIdleTime_Average"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "none"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "VolumeConsumedReadWriteOps_Average"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "none"
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 7,
-          "w": 24,
-          "x": 0,
-          "y": 28
-        },
-        "id": 20,
-        "links": [],
-        "options": {
-          "legend": {
-            "calcs": [
-              "mean",
-              "lastNotNull",
-              "max",
-              "min"
-            ],
-            "displayMode": "table",
-            "placement": "bottom"
-          },
-          "tooltip": {
-            "mode": "single"
-          }
-        },
-        "pluginVersion": "8.2.6",
-        "targets": [
-          {
-            "alias": "",
-            "application": {
-              "filter": ""
-            },
-            "dimensions": {
-              "VolumeId": "$volumeid"
-            },
-            "exemplar": true,
-            "expr": "avg(amazonaws_com_AWS_EBS_VolumeReadOps_sum{__aws_region=\"$region\",VolumeId=~\"$volumeid\",VolumeId!=\"\"}) by (VolumeId)",
-            "functions": [],
-            "group": {
-              "filter": ""
-            },
-            "host": {
-              "filter": ""
-            },
-            "interval": "",
-            "item": {
-              "filter": ""
-            },
-            "legendFormat": "Read: {{VolumeId}}",
-            "metricName": "VolumeThroughputPercentage",
-            "mode": 0,
-            "namespace": "AWS/EBS",
-            "options": {
-              "showDisabledItems": false
-            },
-            "period": "",
-            "refId": "A",
-            "region": "$region",
-            "statistic": "Average"
-          },
-          {
-            "alias": "",
-            "application": {
-              "filter": ""
-            },
-            "dimensions": {
-              "VolumeId": "$volumeid"
-            },
-            "exemplar": true,
-            "expr": "avg(amazonaws_com_AWS_EBS_VolumeWriteOps_sum{__aws_region=\"$region\",VolumeId=~\"$volumeid\",VolumeId!=\"\"}) by (VolumeId)",
-            "functions": [],
-            "group": {
-              "filter": ""
-            },
-            "host": {
-              "filter": ""
-            },
-            "interval": "",
-            "item": {
-              "filter": ""
-            },
-            "legendFormat": "Write: {{VolumeId}}",
-            "metricName": "VolumeConsumedReadWriteOps",
-            "mode": 0,
-            "namespace": "AWS/EBS",
-            "options": {
-              "showDisabledItems": false
-            },
-            "period": "",
-            "refId": "B",
-            "region": "$region",
-            "statistic": "Average"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Volume Read/Write Operations",
-        "type": "timeseries"
-      },
-      {
-        "datasource": null,
-        "description": "",
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 10,
-              "gradientMode": "hue",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineInterpolation": "smooth",
-              "lineWidth": 2,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": true,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "VolumeIdleTime_Average"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "none"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "VolumeConsumedReadWriteOps_Average"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "none"
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 7,
-          "w": 24,
-          "x": 0,
-          "y": 35
-        },
-        "id": 21,
-        "links": [],
-        "options": {
-          "legend": {
-            "calcs": [
-              "mean",
-              "lastNotNull",
-              "max",
-              "min"
-            ],
-            "displayMode": "table",
-            "placement": "bottom"
-          },
-          "tooltip": {
-            "mode": "single"
-          }
-        },
-        "pluginVersion": "8.2.6",
-        "targets": [
-          {
-            "alias": "",
-            "application": {
-              "filter": ""
-            },
-            "dimensions": {
-              "VolumeId": "$volumeid"
-            },
-            "exemplar": true,
-            "expr": "avg(amazonaws_com_AWS_EBS_VolumeTotalReadTime_sum{__aws_region=\"$region\",VolumeId=~\"$volumeid\",VolumeId!=\"\"}) by (VolumeId)",
-            "functions": [],
-            "group": {
-              "filter": ""
-            },
-            "host": {
-              "filter": ""
-            },
-            "interval": "",
-            "item": {
-              "filter": ""
-            },
-            "legendFormat": "Read: {{VolumeId}}",
-            "metricName": "VolumeThroughputPercentage",
-            "mode": 0,
-            "namespace": "AWS/EBS",
-            "options": {
-              "showDisabledItems": false
-            },
-            "period": "",
-            "refId": "A",
-            "region": "$region",
-            "statistic": "Average"
-          },
-          {
-            "alias": "",
-            "application": {
-              "filter": ""
-            },
-            "dimensions": {
-              "VolumeId": "$volumeid"
-            },
-            "exemplar": true,
-            "expr": "avg(amazonaws_com_AWS_EBS_VolumeTotalWriteTime_sum{__aws_region=\"$region\",VolumeId=~\"$volumeid\",VolumeId!=\"\"}) by (VolumeId)",
-            "functions": [],
-            "group": {
-              "filter": ""
-            },
-            "host": {
-              "filter": ""
-            },
-            "interval": "",
-            "item": {
-              "filter": ""
-            },
-            "legendFormat": "Write: {{VolumeId}}",
-            "metricName": "VolumeConsumedReadWriteOps",
-            "mode": 0,
-            "namespace": "AWS/EBS",
-            "options": {
-              "showDisabledItems": false
-            },
-            "period": "",
-            "refId": "B",
-            "region": "$region",
-            "statistic": "Average"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Volume Read/Write Time",
-        "type": "timeseries"
+        "type": "dashboard"
       }
-    ],
-    "refresh": "",
-    "schemaVersion": 32,
-    "style": "dark",
-    "tags": [],
-    "templating": {
-      "list": [
-        {
-          "allValue": null,
-          "current": {
-            "selected": false,
-            "text": "us-east-1",
-            "value": "us-east-1"
+    ]
+  },
+  "description": "Visualize AWS EBS metrics",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "gnetId": 623,
+  "graphTooltip": 0,
+  "id": 1678,
+  "iteration": 1671201054554,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
           },
-          "datasource": null,
-          "definition": "label_values(__aws_region)",
-          "description": null,
-          "error": null,
-          "hide": 0,
-          "includeAll": false,
-          "label": "Region",
-          "multi": false,
-          "name": "region",
-          "options": [],
-          "query": {
-            "query": "label_values(__aws_region)",
-            "refId": "StandardVariableQuery"
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "hue",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
           },
-          "refresh": 1,
-          "regex": "",
-          "skipUrlSync": false,
-          "sort": 0,
-          "tagValuesQuery": "",
-          "tagsQuery": "",
-          "type": "query",
-          "useTags": false
-        },
-        {
-          "allValue": ".*",
-          "current": {
-            "selected": true,
-            "text": [
-              "vol-00104cb090f9135fb",
-              "vol-00949099182668499"
-            ],
-            "value": [
-              "vol-00104cb090f9135fb",
-              "vol-00949099182668499"
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
             ]
           },
-          "datasource": null,
-          "definition": "label_values(VolumeId)",
-          "description": null,
-          "error": null,
-          "hide": 0,
-          "includeAll": true,
-          "label": "VolumeId",
-          "multi": true,
-          "name": "volumeid",
-          "options": [],
-          "query": {
-            "query": "label_values(VolumeId)",
-            "refId": "StandardVariableQuery"
-          },
-          "refresh": 1,
-          "regex": "",
-          "skipUrlSync": false,
-          "sort": 0,
-          "tagValuesQuery": "",
-          "tagsQuery": "",
-          "type": "query",
-          "useTags": false
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 17,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": ["mean", "lastNotNull", "max", "min"],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
         }
-      ]
+      },
+      "pluginVersion": "8.2.6",
+      "targets": [
+        {
+          "alias": "",
+          "application": {
+            "filter": ""
+          },
+          "dimensions": {
+            "VolumeId": "$volumeid"
+          },
+          "exemplar": true,
+          "expr": "avg(amazonaws_com_AWS_EBS_VolumeIdleTime_sum{__aws_region=\"$region\",VolumeId=~\"$volumeid\",VolumeId!=\"\"}) by (VolumeId)",
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "interval": "",
+          "item": {
+            "filter": ""
+          },
+          "legendFormat": "{{VolumeId}}",
+          "metricName": "VolumeTotalReadTime",
+          "mode": 0,
+          "namespace": "AWS/EBS",
+          "options": {
+            "showDisabledItems": false
+          },
+          "period": "",
+          "refId": "A",
+          "region": "$region",
+          "statistic": "Average"
+        },
+        {
+          "alias": "",
+          "application": {
+            "filter": ""
+          },
+          "dimensions": {
+            "VolumeId": "$volumeid"
+          },
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "item": {
+            "filter": ""
+          },
+          "metricName": "VolumeTotalWriteTime",
+          "mode": 0,
+          "namespace": "AWS/EBS",
+          "options": {
+            "showDisabledItems": false
+          },
+          "period": "",
+          "refId": "B",
+          "region": "$region",
+          "statistic": "Average"
+        },
+        {
+          "alias": "",
+          "application": {
+            "filter": ""
+          },
+          "dimensions": {
+            "VolumeId": "$volumeid"
+          },
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "item": {
+            "filter": ""
+          },
+          "metricName": "VolumeIdleTime",
+          "mode": 0,
+          "namespace": "AWS/EBS",
+          "options": {
+            "showDisabledItems": false
+          },
+          "period": "",
+          "refId": "C",
+          "region": "$region",
+          "statistic": "Average"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Idle Time",
+      "type": "timeseries"
     },
-    "time": {
-      "from": "now-1h",
-      "to": "now"
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "VolumeIdleTime_Average"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "s"
+              },
+              {
+                "id": "custom.axisPlacement",
+                "value": "hidden"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 7
+      },
+      "id": 16,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": ["mean", "lastNotNull", "max", "min"],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.2.6",
+      "targets": [
+        {
+          "alias": "",
+          "application": {
+            "filter": ""
+          },
+          "dimensions": {
+            "VolumeId": "$volumeid"
+          },
+          "exemplar": true,
+          "expr": "amazonaws_com_AWS_EBS_VolumeQueueLength_sum{__aws_region=\"$region\",VolumeId=~\"$volumeid\",VolumeId!=\"\"}",
+          "expression": "",
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "id": "",
+          "interval": "",
+          "item": {
+            "filter": ""
+          },
+          "legendFormat": "{{VolumeId}}",
+          "matchExact": true,
+          "metricName": "VolumeQueueLength",
+          "mode": 0,
+          "namespace": "AWS/EBS",
+          "options": {
+            "showDisabledItems": false
+          },
+          "period": "",
+          "refId": "A",
+          "region": "$region",
+          "statistic": "Average"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Volume Queue Length",
+      "type": "timeseries"
     },
-    "timepicker": {},
-    "timezone": "",
-    "title": "CloudWatch - EBS Volume",
-    "uid": "AWSEBSaaa",
-    "version": 6
-  }
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "hue",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "s"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 14
+      },
+      "id": 22,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": ["mean", "lastNotNull", "max", "min"],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.2.6",
+      "targets": [
+        {
+          "alias": "",
+          "application": {
+            "filter": ""
+          },
+          "dimensions": {
+            "VolumeId": "$volumeid"
+          },
+          "exemplar": true,
+          "expr": "avg(amazonaws_com_AWS_EBS_VolumeIdleTime_sum{__aws_region=\"$region\",VolumeId=~\"$volumeid\",VolumeId!=\"\"}) by (VolumeId)",
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "interval": "",
+          "item": {
+            "filter": ""
+          },
+          "legendFormat": "{{VolumeId}}",
+          "metricName": "VolumeTotalReadTime",
+          "mode": 0,
+          "namespace": "AWS/EBS",
+          "options": {
+            "showDisabledItems": false
+          },
+          "period": "",
+          "refId": "A",
+          "region": "$region",
+          "statistic": "Average"
+        },
+        {
+          "alias": "",
+          "application": {
+            "filter": ""
+          },
+          "dimensions": {
+            "VolumeId": "$volumeid"
+          },
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "item": {
+            "filter": ""
+          },
+          "metricName": "VolumeTotalWriteTime",
+          "mode": 0,
+          "namespace": "AWS/EBS",
+          "options": {
+            "showDisabledItems": false
+          },
+          "period": "",
+          "refId": "B",
+          "region": "$region",
+          "statistic": "Average"
+        },
+        {
+          "alias": "",
+          "application": {
+            "filter": ""
+          },
+          "dimensions": {
+            "VolumeId": "$volumeid"
+          },
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "item": {
+            "filter": ""
+          },
+          "metricName": "VolumeIdleTime",
+          "mode": 0,
+          "namespace": "AWS/EBS",
+          "options": {
+            "showDisabledItems": false
+          },
+          "period": "",
+          "refId": "C",
+          "region": "$region",
+          "statistic": "Average"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Volume Time",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "hue",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "decbytes"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "VolumeIdleTime_Average"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "VolumeConsumedReadWriteOps_Average"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 21
+      },
+      "id": 18,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": ["mean", "lastNotNull", "max", "min"],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.2.6",
+      "targets": [
+        {
+          "alias": "",
+          "application": {
+            "filter": ""
+          },
+          "dimensions": {
+            "VolumeId": "$volumeid"
+          },
+          "exemplar": true,
+          "expr": "avg(amazonaws_com_AWS_EBS_VolumeReadBytes_sum{__aws_region=\"$region\",VolumeId=~\"$volumeid\",VolumeId!=\"\"}) by (VolumeId)",
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "interval": "",
+          "item": {
+            "filter": ""
+          },
+          "legendFormat": "Read: {{VolumeId}}",
+          "metricName": "VolumeThroughputPercentage",
+          "mode": 0,
+          "namespace": "AWS/EBS",
+          "options": {
+            "showDisabledItems": false
+          },
+          "period": "",
+          "refId": "A",
+          "region": "$region",
+          "statistic": "Average"
+        },
+        {
+          "alias": "",
+          "application": {
+            "filter": ""
+          },
+          "dimensions": {
+            "VolumeId": "$volumeid"
+          },
+          "exemplar": true,
+          "expr": "avg(amazonaws_com_AWS_EBS_VolumeWriteBytes_sum{__aws_region=\"$region\",VolumeId=~\"$volumeid\",VolumeId!=\"\"}) by (VolumeId)",
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "interval": "",
+          "item": {
+            "filter": ""
+          },
+          "legendFormat": "Write: {{VolumeId}}",
+          "metricName": "VolumeConsumedReadWriteOps",
+          "mode": 0,
+          "namespace": "AWS/EBS",
+          "options": {
+            "showDisabledItems": false
+          },
+          "period": "",
+          "refId": "B",
+          "region": "$region",
+          "statistic": "Average"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Volume Read/Write Bytes",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "hue",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "VolumeIdleTime_Average"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "VolumeConsumedReadWriteOps_Average"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 28
+      },
+      "id": 20,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": ["mean", "lastNotNull", "max", "min"],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.2.6",
+      "targets": [
+        {
+          "alias": "",
+          "application": {
+            "filter": ""
+          },
+          "dimensions": {
+            "VolumeId": "$volumeid"
+          },
+          "exemplar": true,
+          "expr": "avg(amazonaws_com_AWS_EBS_VolumeReadOps_sum{__aws_region=\"$region\",VolumeId=~\"$volumeid\",VolumeId!=\"\"}) by (VolumeId)",
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "interval": "",
+          "item": {
+            "filter": ""
+          },
+          "legendFormat": "Read: {{VolumeId}}",
+          "metricName": "VolumeThroughputPercentage",
+          "mode": 0,
+          "namespace": "AWS/EBS",
+          "options": {
+            "showDisabledItems": false
+          },
+          "period": "",
+          "refId": "A",
+          "region": "$region",
+          "statistic": "Average"
+        },
+        {
+          "alias": "",
+          "application": {
+            "filter": ""
+          },
+          "dimensions": {
+            "VolumeId": "$volumeid"
+          },
+          "exemplar": true,
+          "expr": "avg(amazonaws_com_AWS_EBS_VolumeWriteOps_sum{__aws_region=\"$region\",VolumeId=~\"$volumeid\",VolumeId!=\"\"}) by (VolumeId)",
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "interval": "",
+          "item": {
+            "filter": ""
+          },
+          "legendFormat": "Write: {{VolumeId}}",
+          "metricName": "VolumeConsumedReadWriteOps",
+          "mode": 0,
+          "namespace": "AWS/EBS",
+          "options": {
+            "showDisabledItems": false
+          },
+          "period": "",
+          "refId": "B",
+          "region": "$region",
+          "statistic": "Average"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Volume Read/Write Operations",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "hue",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "VolumeIdleTime_Average"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "VolumeConsumedReadWriteOps_Average"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "none"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 7,
+        "w": 24,
+        "x": 0,
+        "y": 35
+      },
+      "id": 21,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": ["mean", "lastNotNull", "max", "min"],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.2.6",
+      "targets": [
+        {
+          "alias": "",
+          "application": {
+            "filter": ""
+          },
+          "dimensions": {
+            "VolumeId": "$volumeid"
+          },
+          "exemplar": true,
+          "expr": "avg(amazonaws_com_AWS_EBS_VolumeTotalReadTime_sum{__aws_region=\"$region\",VolumeId=~\"$volumeid\",VolumeId!=\"\"}) by (VolumeId)",
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "interval": "",
+          "item": {
+            "filter": ""
+          },
+          "legendFormat": "Read: {{VolumeId}}",
+          "metricName": "VolumeThroughputPercentage",
+          "mode": 0,
+          "namespace": "AWS/EBS",
+          "options": {
+            "showDisabledItems": false
+          },
+          "period": "",
+          "refId": "A",
+          "region": "$region",
+          "statistic": "Average"
+        },
+        {
+          "alias": "",
+          "application": {
+            "filter": ""
+          },
+          "dimensions": {
+            "VolumeId": "$volumeid"
+          },
+          "exemplar": true,
+          "expr": "avg(amazonaws_com_AWS_EBS_VolumeTotalWriteTime_sum{__aws_region=\"$region\",VolumeId=~\"$volumeid\",VolumeId!=\"\"}) by (VolumeId)",
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "interval": "",
+          "item": {
+            "filter": ""
+          },
+          "legendFormat": "Write: {{VolumeId}}",
+          "metricName": "VolumeConsumedReadWriteOps",
+          "mode": 0,
+          "namespace": "AWS/EBS",
+          "options": {
+            "showDisabledItems": false
+          },
+          "period": "",
+          "refId": "B",
+          "region": "$region",
+          "statistic": "Average"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Volume Read/Write Time",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": "",
+  "schemaVersion": 32,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "us-east-1",
+          "value": "us-east-1"
+        },
+        "datasource": null,
+        "definition": "label_values(__aws_region)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Region",
+        "multi": false,
+        "name": "region",
+        "options": [],
+        "query": {
+          "query": "label_values(__aws_region)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": ".*",
+        "current": {
+          "selected": true,
+          "text": ["vol-00104cb090f9135fb", "vol-00949099182668499"],
+          "value": ["vol-00104cb090f9135fb", "vol-00949099182668499"]
+        },
+        "datasource": null,
+        "definition": "label_values(VolumeId)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "VolumeId",
+        "multi": true,
+        "name": "volumeid",
+        "options": [],
+        "query": {
+          "query": "label_values(VolumeId)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-1h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "CloudWatch - EBS Volume",
+  "uid": "AWSEBSaaa",
+  "version": 6
+}

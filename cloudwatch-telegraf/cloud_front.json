@@ -1,739 +1,715 @@
 {
-    "annotations": {
-      "list": [
-        {
-          "builtIn": 1,
-          "datasource": "-- Grafana --",
-          "enable": true,
-          "hide": true,
-          "iconColor": "rgba(0, 211, 255, 1)",
-          "name": "Annotations & Alerts",
-          "target": {
-            "limit": 100,
-            "matchAny": false,
-            "tags": [],
-            "type": "dashboard"
-          },
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "target": {
+          "limit": 100,
+          "matchAny": false,
+          "tags": [],
           "type": "dashboard"
-        }
-      ]
-    },
-    "description": "Visualize AWS CloudFront metrics",
-    "editable": true,
-    "fiscalYearStartMonth": 0,
-    "gnetId": 674,
-    "graphTooltip": 0,
-    "id": 470,
-    "iteration": 1678733654217,
-    "links": [],
-    "liveNow": false,
-    "panels": [
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "thresholds"
-            },
-            "mappings": [],
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "red",
-                  "value": null
-                },
-                {
-                  "color": "#EAB839",
-                  "value": 20
-                },
-                {
-                  "color": "green",
-                  "value": 50
-                }
-              ]
-            },
-            "unit": "percent"
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "VolumeIdleTime_Average"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "percent"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "TotalErrorRate_Sum"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "percent"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "TotalErrorRate_Average"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "percent"
-                }
-              ]
-            }
-          ]
         },
-        "gridPos": {
-          "h": 10,
-          "w": 13,
-          "x": 0,
-          "y": 0
-        },
-        "id": 16,
-        "links": [],
-        "options": {
-          "orientation": "auto",
-          "reduceOptions": {
-            "calcs": [
-              "lastNotNull"
-            ],
-            "fields": "",
-            "values": false
-          },
-          "showThresholdLabels": false,
-          "showThresholdMarkers": true,
-          "text": {}
-        },
-        "pluginVersion": "8.2.6",
-        "targets": [
-          {
-            "alias": "",
-            "application": {
-              "filter": ""
-            },
-            "dimensions": {
-              "DistributionId": "$distributionid",
-              "Region": "Global"
-            },
-            "exemplar": true,
-            "expr": "avg(cloudwatch_aws_cloud_front_cache_hit_rate_average{distribution_id=~\"$distribution_id\"}) by (distribution_id)",
-            "expression": "",
-            "functions": [],
-            "group": {
-              "filter": ""
-            },
-            "host": {
-              "filter": ""
-            },
-            "id": "",
-            "interval": "",
-            "item": {
-              "filter": ""
-            },
-            "legendFormat": "Cachhe Hit Rate - {{distribution_id}}",
-            "matchExact": true,
-            "metricName": "Requests",
-            "mode": 0,
-            "namespace": "AWS/CloudFront",
-            "options": {
-              "showDisabledItems": false
-            },
-            "period": "",
-            "refId": "A",
-            "region": "us-east-1",
-            "statistic": "Sum"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Requests and Error Rate",
-        "type": "gauge"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "bars",
-              "fillOpacity": 100,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineInterpolation": "smooth",
-              "lineWidth": 2,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": true,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 10,
-          "w": 11,
-          "x": 13,
-          "y": 0
-        },
-        "id": 17,
-        "links": [],
-        "options": {
-          "legend": {
-            "calcs": [
-              "lastNotNull",
-              "max",
-              "mean",
-              "min"
-            ],
-            "displayMode": "table",
-            "placement": "bottom"
-          },
-          "tooltip": {
-            "mode": "single"
-          }
-        },
-        "pluginVersion": "8.2.6",
-        "targets": [
-          {
-            "alias": "",
-            "application": {
-              "filter": ""
-            },
-            "dimensions": {
-              "DistributionId": "$distributionid",
-              "Region": "Global"
-            },
-            "exemplar": true,
-            "expr": "avg(cloudwatch_aws_cloud_front_4xx_error_rate_average{distribution_id=~\"$distribution_id\"}) by (distribution_id)",
-            "functions": [],
-            "group": {
-              "filter": ""
-            },
-            "host": {
-              "filter": ""
-            },
-            "interval": "",
-            "item": {
-              "filter": ""
-            },
-            "legendFormat": "4xxErrorRate - {{distribution_id}}",
-            "metricName": "4xxErrorRate",
-            "mode": 0,
-            "namespace": "AWS/CloudFront",
-            "options": {
-              "showDisabledItems": false
-            },
-            "period": "",
-            "refId": "A",
-            "region": "us-east-1",
-            "statistic": "Average"
-          },
-          {
-            "alias": "",
-            "application": {
-              "filter": ""
-            },
-            "dimensions": {
-              "DistributionId": "$distributionid",
-              "Region": "Global"
-            },
-            "exemplar": true,
-            "expr": "avg(cloudwatch_aws_cloud_front_5xx_error_rate_average{distribution_id=~\"$distribution_id\"}) by (distribution_id)",
-            "functions": [],
-            "group": {
-              "filter": ""
-            },
-            "host": {
-              "filter": ""
-            },
-            "interval": "",
-            "item": {
-              "filter": ""
-            },
-            "legendFormat": "5xxErrorRate - {{distribution_id}}",
-            "metricName": "5xxErrorRate",
-            "mode": 0,
-            "namespace": "AWS/CloudFront",
-            "options": {
-              "showDisabledItems": false
-            },
-            "period": "",
-            "refId": "B",
-            "region": "us-east-1",
-            "statistic": "Average"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "4xxErrorRate / 5xxErrorRate",
-        "type": "timeseries"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 10,
-              "gradientMode": "hue",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineInterpolation": "smooth",
-              "lineStyle": {
-                "dash": [
-                  10,
-                  10
-                ],
-                "fill": "dash"
-              },
-              "lineWidth": 2,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "auto",
-              "spanNulls": true,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 100
-                }
-              ]
-            },
-            "unit": "none"
-          },
-          "overrides": [
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "VolumeIdleTime_Average"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "percent"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "TotalErrorRate_Sum"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "percent"
-                }
-              ]
-            },
-            {
-              "matcher": {
-                "id": "byName",
-                "options": "TotalErrorRate_Average"
-              },
-              "properties": [
-                {
-                  "id": "unit",
-                  "value": "percent"
-                }
-              ]
-            }
-          ]
-        },
-        "gridPos": {
-          "h": 10,
-          "w": 13,
-          "x": 0,
-          "y": 10
-        },
-        "id": 19,
-        "links": [],
-        "options": {
-          "legend": {
-            "calcs": [
-              "lastNotNull",
-              "min",
-              "max",
-              "mean"
-            ],
-            "displayMode": "table",
-            "placement": "bottom"
-          },
-          "tooltip": {
-            "mode": "single"
-          }
-        },
-        "pluginVersion": "8.2.6",
-        "targets": [
-          {
-            "alias": "",
-            "application": {
-              "filter": ""
-            },
-            "dimensions": {
-              "DistributionId": "$distributionid",
-              "Region": "Global"
-            },
-            "exemplar": true,
-            "expr": "sum(cloudwatch_aws_cloud_front_requests_sum{distribution_id=~\"$distribution_id\"}) by (distribution_id)",
-            "expression": "",
-            "functions": [],
-            "group": {
-              "filter": ""
-            },
-            "host": {
-              "filter": ""
-            },
-            "id": "",
-            "interval": "",
-            "item": {
-              "filter": ""
-            },
-            "legendFormat": "Requests - {{distribution_id}}",
-            "matchExact": true,
-            "metricName": "Requests",
-            "mode": 0,
-            "namespace": "AWS/CloudFront",
-            "options": {
-              "showDisabledItems": false
-            },
-            "period": "",
-            "refId": "A",
-            "region": "us-east-1",
-            "statistic": "Sum"
-          },
-          {
-            "exemplar": true,
-            "expr": "avg(cloudwatch_aws_cloud_front_total_error_rate_average{distribution_id=~\"$distribution_id\"}) by (distribution_id)",
-            "hide": false,
-            "interval": "",
-            "legendFormat": "ErrorRate - {{distribution_id}}",
-            "refId": "B"
-          },
-          {
-            "alias": "",
-            "application": {
-              "filter": ""
-            },
-            "dimensions": {
-              "DistributionId": "$distributionid",
-              "Region": "Global"
-            },
-            "exemplar": true,
-            "expr": "avg(cloudwatch_aws_cloud_front_cache_hit_rate_average{distribution_id=~\"$distribution_id\"}) by (distribution_id)",
-            "expression": "",
-            "functions": [],
-            "group": {
-              "filter": ""
-            },
-            "hide": false,
-            "host": {
-              "filter": ""
-            },
-            "id": "",
-            "interval": "",
-            "item": {
-              "filter": ""
-            },
-            "legendFormat": "CacheHitRate - {{distribution_id}}",
-            "matchExact": true,
-            "metricName": "Requests",
-            "mode": 0,
-            "namespace": "AWS/CloudFront",
-            "options": {
-              "showDisabledItems": false
-            },
-            "period": "",
-            "refId": "C",
-            "region": "us-east-1",
-            "statistic": "Sum"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "Requests and Error Rate",
-        "type": "timeseries"
-      },
-      {
-        "datasource": null,
-        "fieldConfig": {
-          "defaults": {
-            "color": {
-              "mode": "palette-classic"
-            },
-            "custom": {
-              "axisLabel": "",
-              "axisPlacement": "auto",
-              "barAlignment": 0,
-              "drawStyle": "line",
-              "fillOpacity": 10,
-              "gradientMode": "none",
-              "hideFrom": {
-                "legend": false,
-                "tooltip": false,
-                "viz": false
-              },
-              "lineInterpolation": "smooth",
-              "lineWidth": 2,
-              "pointSize": 5,
-              "scaleDistribution": {
-                "type": "linear"
-              },
-              "showPoints": "never",
-              "spanNulls": false,
-              "stacking": {
-                "group": "A",
-                "mode": "none"
-              },
-              "thresholdsStyle": {
-                "mode": "off"
-              }
-            },
-            "mappings": [],
-            "min": 0,
-            "thresholds": {
-              "mode": "absolute",
-              "steps": [
-                {
-                  "color": "green",
-                  "value": null
-                },
-                {
-                  "color": "red",
-                  "value": 80
-                }
-              ]
-            },
-            "unit": "bytes"
-          },
-          "overrides": []
-        },
-        "gridPos": {
-          "h": 10,
-          "w": 11,
-          "x": 13,
-          "y": 10
-        },
-        "id": 18,
-        "links": [],
-        "options": {
-          "legend": {
-            "calcs": [
-              "mean",
-              "lastNotNull",
-              "max",
-              "min"
-            ],
-            "displayMode": "table",
-            "placement": "bottom"
-          },
-          "tooltip": {
-            "mode": "single"
-          }
-        },
-        "pluginVersion": "8.2.6",
-        "targets": [
-          {
-            "alias": "",
-            "application": {
-              "filter": ""
-            },
-            "dimensions": {
-              "DistributionId": "$distributionid",
-              "Region": "Global"
-            },
-            "exemplar": true,
-            "expr": "sum(cloudwatch_aws_cloud_front_bytes_downloaded_average{distribution_id=~\"$distribution_id\"}) by (distribution_id)",
-            "expression": "",
-            "functions": [],
-            "group": {
-              "filter": ""
-            },
-            "host": {
-              "filter": ""
-            },
-            "id": "",
-            "interval": "",
-            "item": {
-              "filter": ""
-            },
-            "legendFormat": "BytesDownloaded - {{distribution_id}}",
-            "matchExact": true,
-            "metricName": "BytesDownloaded",
-            "mode": 0,
-            "namespace": "AWS/CloudFront",
-            "options": {
-              "showDisabledItems": false
-            },
-            "period": "",
-            "refId": "A",
-            "region": "us-east-1",
-            "statistic": "Sum"
-          },
-          {
-            "alias": "",
-            "application": {
-              "filter": ""
-            },
-            "dimensions": {
-              "DistributionId": "$distributionid",
-              "Region": "Global"
-            },
-            "exemplar": true,
-            "expr": "sum(cloudwatch_aws_cloud_front_bytes_uploaded_average{distribution_id=~\"$distribution_id\"}) by (distribution_id)",
-            "expression": "",
-            "functions": [],
-            "group": {
-              "filter": ""
-            },
-            "host": {
-              "filter": ""
-            },
-            "id": "",
-            "interval": "",
-            "item": {
-              "filter": ""
-            },
-            "legendFormat": "BytesUploaded - {{distribution_id}}",
-            "matchExact": true,
-            "metricName": "BytesUploaded",
-            "mode": 0,
-            "namespace": "AWS/CloudFront",
-            "options": {
-              "showDisabledItems": false
-            },
-            "period": "",
-            "refId": "B",
-            "region": "us-east-1",
-            "statistic": "Sum"
-          }
-        ],
-        "timeFrom": null,
-        "timeShift": null,
-        "title": "BytesDownloaded / BytesUploaded",
-        "type": "timeseries"
+        "type": "dashboard"
       }
-    ],
-    "refresh": false,
-    "schemaVersion": 32,
-    "style": "dark",
-    "tags": [],
-    "templating": {
-      "list": [
-        {
-          "allValue": null,
-          "current": {
-            "selected": true,
-            "text": [
-              "All"
-            ],
-            "value": [
-              "$__all"
+    ]
+  },
+  "description": "Visualize AWS CloudFront metrics",
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "gnetId": 674,
+  "graphTooltip": 0,
+  "id": 470,
+  "iteration": 1678733654217,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              },
+              {
+                "color": "#EAB839",
+                "value": 20
+              },
+              {
+                "color": "green",
+                "value": 50
+              }
             ]
           },
-          "datasource": null,
-          "definition": "label_values(distribution_id)",
-          "description": null,
-          "error": null,
-          "hide": 0,
-          "includeAll": true,
-          "label": "",
-          "multi": true,
-          "name": "distribution_id",
-          "options": [],
-          "query": {
-            "query": "label_values(distribution_id)",
-            "refId": "StandardVariableQuery"
+          "unit": "percent"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "VolumeIdleTime_Average"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              }
+            ]
           },
-          "refresh": 1,
-          "regex": "",
-          "skipUrlSync": false,
-          "sort": 1,
-          "tagValuesQuery": null,
-          "tagsQuery": null,
-          "type": "query",
-          "useTags": false
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "TotalErrorRate_Sum"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "TotalErrorRate_Average"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 13,
+        "x": 0,
+        "y": 0
+      },
+      "id": 16,
+      "links": [],
+      "options": {
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["lastNotNull"],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "8.2.6",
+      "targets": [
+        {
+          "alias": "",
+          "application": {
+            "filter": ""
+          },
+          "dimensions": {
+            "DistributionId": "$distributionid",
+            "Region": "Global"
+          },
+          "exemplar": true,
+          "expr": "avg(cloudwatch_aws_cloud_front_cache_hit_rate_average{distribution_id=~\"$distribution_id\"}) by (distribution_id)",
+          "expression": "",
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "id": "",
+          "interval": "",
+          "item": {
+            "filter": ""
+          },
+          "legendFormat": "Cachhe Hit Rate - {{distribution_id}}",
+          "matchExact": true,
+          "metricName": "Requests",
+          "mode": 0,
+          "namespace": "AWS/CloudFront",
+          "options": {
+            "showDisabledItems": false
+          },
+          "period": "",
+          "refId": "A",
+          "region": "us-east-1",
+          "statistic": "Sum"
         }
-      ]
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Requests and Error Rate",
+      "type": "gauge"
     },
-    "time": {
-      "from": "now-6h",
-      "to": "now"
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "bars",
+            "fillOpacity": 100,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 11,
+        "x": 13,
+        "y": 0
+      },
+      "id": 17,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": ["lastNotNull", "max", "mean", "min"],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.2.6",
+      "targets": [
+        {
+          "alias": "",
+          "application": {
+            "filter": ""
+          },
+          "dimensions": {
+            "DistributionId": "$distributionid",
+            "Region": "Global"
+          },
+          "exemplar": true,
+          "expr": "avg(cloudwatch_aws_cloud_front_4xx_error_rate_average{distribution_id=~\"$distribution_id\"}) by (distribution_id)",
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "interval": "",
+          "item": {
+            "filter": ""
+          },
+          "legendFormat": "4xxErrorRate - {{distribution_id}}",
+          "metricName": "4xxErrorRate",
+          "mode": 0,
+          "namespace": "AWS/CloudFront",
+          "options": {
+            "showDisabledItems": false
+          },
+          "period": "",
+          "refId": "A",
+          "region": "us-east-1",
+          "statistic": "Average"
+        },
+        {
+          "alias": "",
+          "application": {
+            "filter": ""
+          },
+          "dimensions": {
+            "DistributionId": "$distributionid",
+            "Region": "Global"
+          },
+          "exemplar": true,
+          "expr": "avg(cloudwatch_aws_cloud_front_5xx_error_rate_average{distribution_id=~\"$distribution_id\"}) by (distribution_id)",
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "interval": "",
+          "item": {
+            "filter": ""
+          },
+          "legendFormat": "5xxErrorRate - {{distribution_id}}",
+          "metricName": "5xxErrorRate",
+          "mode": 0,
+          "namespace": "AWS/CloudFront",
+          "options": {
+            "showDisabledItems": false
+          },
+          "period": "",
+          "refId": "B",
+          "region": "us-east-1",
+          "statistic": "Average"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "4xxErrorRate / 5xxErrorRate",
+      "type": "timeseries"
     },
-    "timepicker": {},
-    "timezone": "",
-    "title": "CloudWatch - CloudFront",
-    "uid": "raJpZGCMk",
-    "version": 7
-  }
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "hue",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "dash": [10, 10],
+              "fill": "dash"
+            },
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": true,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 100
+              }
+            ]
+          },
+          "unit": "none"
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "VolumeIdleTime_Average"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "TotalErrorRate_Sum"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "TotalErrorRate_Average"
+            },
+            "properties": [
+              {
+                "id": "unit",
+                "value": "percent"
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 13,
+        "x": 0,
+        "y": 10
+      },
+      "id": 19,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": ["lastNotNull", "min", "max", "mean"],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.2.6",
+      "targets": [
+        {
+          "alias": "",
+          "application": {
+            "filter": ""
+          },
+          "dimensions": {
+            "DistributionId": "$distributionid",
+            "Region": "Global"
+          },
+          "exemplar": true,
+          "expr": "sum(cloudwatch_aws_cloud_front_requests_sum{distribution_id=~\"$distribution_id\"}) by (distribution_id)",
+          "expression": "",
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "id": "",
+          "interval": "",
+          "item": {
+            "filter": ""
+          },
+          "legendFormat": "Requests - {{distribution_id}}",
+          "matchExact": true,
+          "metricName": "Requests",
+          "mode": 0,
+          "namespace": "AWS/CloudFront",
+          "options": {
+            "showDisabledItems": false
+          },
+          "period": "",
+          "refId": "A",
+          "region": "us-east-1",
+          "statistic": "Sum"
+        },
+        {
+          "exemplar": true,
+          "expr": "avg(cloudwatch_aws_cloud_front_total_error_rate_average{distribution_id=~\"$distribution_id\"}) by (distribution_id)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "ErrorRate - {{distribution_id}}",
+          "refId": "B"
+        },
+        {
+          "alias": "",
+          "application": {
+            "filter": ""
+          },
+          "dimensions": {
+            "DistributionId": "$distributionid",
+            "Region": "Global"
+          },
+          "exemplar": true,
+          "expr": "avg(cloudwatch_aws_cloud_front_cache_hit_rate_average{distribution_id=~\"$distribution_id\"}) by (distribution_id)",
+          "expression": "",
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "hide": false,
+          "host": {
+            "filter": ""
+          },
+          "id": "",
+          "interval": "",
+          "item": {
+            "filter": ""
+          },
+          "legendFormat": "CacheHitRate - {{distribution_id}}",
+          "matchExact": true,
+          "metricName": "Requests",
+          "mode": 0,
+          "namespace": "AWS/CloudFront",
+          "options": {
+            "showDisabledItems": false
+          },
+          "period": "",
+          "refId": "C",
+          "region": "us-east-1",
+          "statistic": "Sum"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Requests and Error Rate",
+      "type": "timeseries"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 10,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "lineInterpolation": "smooth",
+            "lineWidth": 2,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "never",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "min": 0,
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "bytes"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 11,
+        "x": 13,
+        "y": 10
+      },
+      "id": 18,
+      "links": [],
+      "options": {
+        "legend": {
+          "calcs": ["mean", "lastNotNull", "max", "min"],
+          "displayMode": "table",
+          "placement": "bottom"
+        },
+        "tooltip": {
+          "mode": "single"
+        }
+      },
+      "pluginVersion": "8.2.6",
+      "targets": [
+        {
+          "alias": "",
+          "application": {
+            "filter": ""
+          },
+          "dimensions": {
+            "DistributionId": "$distributionid",
+            "Region": "Global"
+          },
+          "exemplar": true,
+          "expr": "sum(cloudwatch_aws_cloud_front_bytes_downloaded_average{distribution_id=~\"$distribution_id\"}) by (distribution_id)",
+          "expression": "",
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "id": "",
+          "interval": "",
+          "item": {
+            "filter": ""
+          },
+          "legendFormat": "BytesDownloaded - {{distribution_id}}",
+          "matchExact": true,
+          "metricName": "BytesDownloaded",
+          "mode": 0,
+          "namespace": "AWS/CloudFront",
+          "options": {
+            "showDisabledItems": false
+          },
+          "period": "",
+          "refId": "A",
+          "region": "us-east-1",
+          "statistic": "Sum"
+        },
+        {
+          "alias": "",
+          "application": {
+            "filter": ""
+          },
+          "dimensions": {
+            "DistributionId": "$distributionid",
+            "Region": "Global"
+          },
+          "exemplar": true,
+          "expr": "sum(cloudwatch_aws_cloud_front_bytes_uploaded_average{distribution_id=~\"$distribution_id\"}) by (distribution_id)",
+          "expression": "",
+          "functions": [],
+          "group": {
+            "filter": ""
+          },
+          "host": {
+            "filter": ""
+          },
+          "id": "",
+          "interval": "",
+          "item": {
+            "filter": ""
+          },
+          "legendFormat": "BytesUploaded - {{distribution_id}}",
+          "matchExact": true,
+          "metricName": "BytesUploaded",
+          "mode": 0,
+          "namespace": "AWS/CloudFront",
+          "options": {
+            "showDisabledItems": false
+          },
+          "period": "",
+          "refId": "B",
+          "region": "us-east-1",
+          "statistic": "Sum"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "BytesDownloaded / BytesUploaded",
+      "type": "timeseries"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 32,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": ["All"],
+          "value": ["$__all"]
+        },
+        "datasource": null,
+        "definition": "label_values(distribution_id)",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "",
+        "multi": true,
+        "name": "distribution_id",
+        "options": [],
+        "query": {
+          "query": "label_values(distribution_id)",
+          "refId": "StandardVariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": null,
+        "tagsQuery": null,
+        "type": "query",
+        "useTags": false
+      }
+    ]
+  },
+  "time": {
+    "from": "now-6h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "CloudWatch - CloudFront",
+  "uid": "raJpZGCMk",
+  "version": 7
+}

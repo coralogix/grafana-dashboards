@@ -204,10 +204,7 @@
           "options": {
             "fields": {
               "Value #A": {
-                "aggregations": [
-                  "mean",
-                  "max"
-                ],
+                "aggregations": ["mean", "max"],
                 "operation": "aggregate"
               },
               "service_name": {
@@ -344,9 +341,7 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -731,10 +726,7 @@
       "id": 17,
       "options": {
         "legend": {
-          "calcs": [
-            "lastNotNull",
-            "mean"
-          ],
+          "calcs": ["lastNotNull", "mean"],
           "displayMode": "table",
           "placement": "bottom"
         },
@@ -791,21 +783,15 @@
       },
       "id": 18,
       "options": {
-        "displayLabels": [
-          "value"
-        ],
+        "displayLabels": ["value"],
         "legend": {
           "displayMode": "table",
           "placement": "right",
-          "values": [
-            "value"
-          ]
+          "values": ["value"]
         },
         "pieType": "pie",
         "reduceOptions": {
-          "calcs": [
-            "mean"
-          ],
+          "calcs": ["mean"],
           "fields": "",
           "values": false
         },
@@ -885,10 +871,7 @@
       "id": 19,
       "options": {
         "legend": {
-          "calcs": [
-            "lastNotNull",
-            "mean"
-          ],
+          "calcs": ["lastNotNull", "mean"],
           "displayMode": "table",
           "placement": "bottom"
         },
@@ -981,11 +964,7 @@
       "id": 20,
       "options": {
         "legend": {
-          "calcs": [
-            "sum",
-            "lastNotNull",
-            "mean"
-          ],
+          "calcs": ["sum", "lastNotNull", "mean"],
           "displayMode": "table",
           "placement": "bottom"
         },
@@ -1065,10 +1044,7 @@
       "id": 22,
       "options": {
         "legend": {
-          "calcs": [
-            "lastNotNull",
-            "mean"
-          ],
+          "calcs": ["lastNotNull", "mean"],
           "displayMode": "table",
           "placement": "bottom"
         },

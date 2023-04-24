@@ -54,9 +54,7 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "max"
-          ],
+          "calcs": ["max"],
           "fields": "",
           "values": false
         },
@@ -129,9 +127,7 @@
       "options": {
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "lastNotNull"
-          ],
+          "calcs": ["lastNotNull"],
           "fields": "",
           "values": false
         },
@@ -198,9 +194,7 @@
       "options": {
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "max"
-          ],
+          "calcs": ["max"],
           "fields": "",
           "values": false
         },
@@ -257,9 +251,7 @@
         "justifyMode": "auto",
         "orientation": "auto",
         "reduceOptions": {
-          "calcs": [
-            "sum"
-          ],
+          "calcs": ["sum"],
           "fields": "",
           "limit": 200,
           "values": false
@@ -354,10 +346,7 @@
       "interval": "1m",
       "options": {
         "legend": {
-          "calcs": [
-            "lastNotNull",
-            "mean"
-          ],
+          "calcs": ["lastNotNull", "mean"],
           "displayMode": "table",
           "placement": "right"
         },
@@ -443,10 +432,7 @@
       "interval": "1m",
       "options": {
         "legend": {
-          "calcs": [
-            "lastNotNull",
-            "sum"
-          ],
+          "calcs": ["lastNotNull", "sum"],
           "displayMode": "table",
           "placement": "right"
         },
@@ -549,11 +535,7 @@
       "interval": "1m",
       "options": {
         "legend": {
-          "calcs": [
-            "lastNotNull",
-            "max",
-            "sum"
-          ],
+          "calcs": ["lastNotNull", "max", "sum"],
           "displayMode": "table",
           "placement": "right"
         },
@@ -665,10 +647,7 @@
       "interval": "1m",
       "options": {
         "legend": {
-          "calcs": [
-            "lastNotNull",
-            "sum"
-          ],
+          "calcs": ["lastNotNull", "sum"],
           "displayMode": "table",
           "placement": "right"
         },
@@ -779,10 +758,7 @@
       "interval": "1m",
       "options": {
         "legend": {
-          "calcs": [
-            "lastNotNull",
-            "sum"
-          ],
+          "calcs": ["lastNotNull", "sum"],
           "displayMode": "table",
           "placement": "right"
         },
@@ -822,12 +798,8 @@
         "allValue": null,
         "current": {
           "selected": true,
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
+          "text": ["All"],
+          "value": ["$__all"]
         },
         "datasource": null,
         "definition": "label_values(amazonaws_com_AWS_Lambda_Duration,__aws_region)",
@@ -853,12 +825,8 @@
         "allValue": null,
         "current": {
           "selected": true,
-          "text": [
-            "All"
-          ],
-          "value": [
-            "$__all"
-          ]
+          "text": ["All"],
+          "value": ["$__all"]
         },
         "datasource": null,
         "definition": "label_values(amazonaws_com_AWS_Lambda_Duration{__aws_region=~\"$region\"}, FunctionName)",

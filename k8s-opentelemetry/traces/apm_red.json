@@ -23,7 +23,7 @@
   "gnetId": null,
   "graphTooltip": 0,
   "id": 2574,
-  "iteration": 1680754104412,
+  "iteration": 1682971442618,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -1080,7 +1080,7 @@
           "value": "checkoutservice"
         },
         "datasource": null,
-        "definition": "label_values(service_name)",
+        "definition": "label_values(calls_total_total, service_name)",
         "description": null,
         "error": null,
         "hide": 0,
@@ -1090,7 +1090,7 @@
         "name": "service_name",
         "options": [],
         "query": {
-          "query": "label_values(service_name)",
+          "query": "label_values(calls_total_total, service_name)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -1155,5 +1155,5 @@
   "timezone": "",
   "title": "APM - RED",
   "uid": "zYYbqGfVz",
-  "version": 82
+  "version": 86
 }

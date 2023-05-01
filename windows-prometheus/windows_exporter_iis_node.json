@@ -24,7 +24,7 @@
   "gnetId": 14532,
   "graphTooltip": 0,
   "id": 2008,
-  "iteration": 1681833295938,
+  "iteration": 1682972189873,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -3531,11 +3531,11 @@
         "allValue": null,
         "current": {
           "selected": false,
-          "text": "gm-staging-web1",
-          "value": "gm-staging-web1"
+          "text": "All",
+          "value": "$__all"
         },
         "datasource": "Metrics",
-        "definition": "label_values(host_name)",
+        "definition": "label_values(windows_iis_current_application_pool_state, host_name)",
         "description": null,
         "error": null,
         "hide": 0,
@@ -3545,7 +3545,7 @@
         "name": "hostname",
         "options": [],
         "query": {
-          "query": "label_values(host_name)",
+          "query": "label_values(windows_iis_current_application_pool_state, host_name)",
           "refId": "StandardVariableQuery"
         },
         "refresh": 1,
@@ -3590,9 +3590,10 @@
       {
         "allValue": null,
         "current": {
+          "isNone": true,
           "selected": false,
-          "text": "events-staging",
-          "value": "events-staging"
+          "text": "None",
+          "value": ""
         },
         "datasource": "Metrics",
         "definition": "label_values(app)",
@@ -3627,5 +3628,5 @@
   "timezone": "",
   "title": "Windows Exporter IIS Node",
   "uid": "__gEPv6Mzjhh",
-  "version": 13
+  "version": 14
 }

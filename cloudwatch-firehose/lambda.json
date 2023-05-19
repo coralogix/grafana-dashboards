@@ -22,8 +22,8 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 1090,
-  "iteration": 1673947448560,
+  "id": 3531,
+  "iteration": 1684520988051,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -46,6 +46,12 @@
           }
         },
         "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 0,
+        "y": 0
       },
       "id": 4,
       "options": {
@@ -79,6 +85,74 @@
           "refId": "Functions"
         }
       ],
+      "type": "stat"
+    },
+    {
+      "datasource": null,
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unit": "locale"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 6,
+        "y": 0
+      },
+      "id": 9,
+      "interval": "1m",
+      "maxDataPoints": 999999,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "none",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": ["sum"],
+          "fields": "",
+          "limit": 200,
+          "values": false
+        },
+        "text": {},
+        "textMode": "auto"
+      },
+      "pluginVersion": "8.2.6",
+      "targets": [
+        {
+          "exemplar": true,
+          "expr": "sum(amazonaws_com_AWS_Lambda_Invocations_sum{__aws_region=~\"$region\",FunctionName=~\"$function\"}>0)",
+          "format": "time_series",
+          "hide": false,
+          "instant": false,
+          "interval": "",
+          "legendFormat": "Lambda Invocations",
+          "refId": "C"
+        },
+        {
+          "exemplar": true,
+          "expr": "sum(amazonaws_com_AWS_Lambda_Errors_sum{__aws_region=~\"$region\",FunctionName=~\"$function\"}>0)",
+          "hide": false,
+          "interval": "",
+          "legendFormat": "Lambda Errors",
+          "refId": "B"
+        }
+      ],
+      "timeFrom": null,
       "type": "stat"
     },
     {
@@ -119,8 +193,8 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 3,
-        "x": 6,
+        "w": 6,
+        "x": 12,
         "y": 0
       },
       "id": 6,
@@ -186,8 +260,8 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 3,
-        "x": 9,
+        "w": 6,
+        "x": 18,
         "y": 0
       },
       "id": 13,
@@ -214,74 +288,6 @@
       ],
       "title": "Max Labmda Errors",
       "type": "gauge"
-    },
-    {
-      "datasource": null,
-      "fieldConfig": {
-        "defaults": {
-          "color": {
-            "mode": "thresholds"
-          },
-          "mappings": [],
-          "thresholds": {
-            "mode": "absolute",
-            "steps": [
-              {
-                "color": "green",
-                "value": null
-              }
-            ]
-          },
-          "unit": "locale"
-        },
-        "overrides": []
-      },
-      "gridPos": {
-        "h": 3,
-        "w": 6,
-        "x": 0,
-        "y": 3
-      },
-      "id": 9,
-      "interval": "1m",
-      "maxDataPoints": 999999,
-      "options": {
-        "colorMode": "value",
-        "graphMode": "none",
-        "justifyMode": "auto",
-        "orientation": "auto",
-        "reduceOptions": {
-          "calcs": ["sum"],
-          "fields": "",
-          "limit": 200,
-          "values": false
-        },
-        "text": {},
-        "textMode": "auto"
-      },
-      "pluginVersion": "8.2.6",
-      "targets": [
-        {
-          "exemplar": true,
-          "expr": "sum(amazonaws_com_AWS_Lambda_Invocations_sum{__aws_region=~\"$region\",FunctionName=~\"$function\"}>0)",
-          "format": "time_series",
-          "hide": false,
-          "instant": false,
-          "interval": "",
-          "legendFormat": "Lambda Invocations",
-          "refId": "C"
-        },
-        {
-          "exemplar": true,
-          "expr": "sum(amazonaws_com_AWS_Lambda_Errors_sum{__aws_region=~\"$region\",FunctionName=~\"$function\"}>0)",
-          "hide": false,
-          "interval": "",
-          "legendFormat": "Lambda Errors",
-          "refId": "B"
-        }
-      ],
-      "timeFrom": null,
-      "type": "stat"
     },
     {
       "datasource": null,
@@ -791,7 +797,7 @@
   ],
   "schemaVersion": 32,
   "style": "dark",
-  "tags": [],
+  "tags": ["cloudwatch"],
   "templating": {
     "list": [
       {
@@ -851,12 +857,12 @@
     ]
   },
   "time": {
-    "from": "now-7d",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
   "title": "CloudWatch - Lambda",
   "uid": "hafzDqp4z",
-  "version": 3
+  "version": 4
 }

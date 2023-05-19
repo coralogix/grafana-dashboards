@@ -22,8 +22,8 @@
   "fiscalYearStartMonth": 0,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 939,
-  "iteration": 1671024457351,
+  "id": 3529,
+  "iteration": 1684520185740,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -1090,15 +1090,15 @@
   ],
   "schemaVersion": 32,
   "style": "dark",
-  "tags": [],
+  "tags": ["cloudwatch"],
   "templating": {
     "list": [
       {
         "allValue": ".*",
         "current": {
           "selected": true,
-          "text": ["dee1bkfincziv3f0-001", "dee1wgllbq5gxltr-001"],
-          "value": ["dee1bkfincziv3f0-001", "dee1wgllbq5gxltr-001"]
+          "text": ["All"],
+          "value": ["$__all"]
         },
         "datasource": null,
         "definition": "label_values(CacheClusterId)",
@@ -1124,8 +1124,8 @@
         "allValue": ".*",
         "current": {
           "selected": true,
-          "text": ["0001"],
-          "value": ["0001"]
+          "text": ["All"],
+          "value": ["$__all"]
         },
         "datasource": null,
         "definition": "label_values(CacheNodeId)",
@@ -1150,12 +1150,12 @@
     ]
   },
   "time": {
-    "from": "now-90d",
+    "from": "now-1h",
     "to": "now"
   },
   "timepicker": {},
   "timezone": "",
-  "title": "CloudWatch - ElastiCache v1",
+  "title": "CloudWatch - ElastiCache",
   "uid": "Ec9aCwH9e",
-  "version": 4
+  "version": 5
 }
